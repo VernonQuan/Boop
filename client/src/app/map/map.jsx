@@ -39,32 +39,44 @@ class Map extends Component {
       v: '3.25'
     }).then((googleMaps) => {
       this.initMap(googleMaps); // sets instance vars atm
-      var map = this.mapInstance;
-
-      googleMaps.event.addListener(map, 'drag', () => {
-        var centerLatLng = map.getCenter();
-        this.centerMarker.setPosition(centerLatLng);
-      });
-
     });
   }
 
   initMap(googleMaps) {
     console.log('called initMap');
+    var context = this;
     var hackReactor = { lat: 37.791066, lng: -122.3991683 }
     var uluru = {lat: -25.363, lng: 131.044};
-    var map = new googleMaps.Map(document.getElementById('map'), {
-      zoom: 17,
-      center: hackReactor
+    // Acquires current location of user
+    navigator.geolocation.getCurrentPosition(function(position) {
+
+      var latlng = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      var map = new googleMaps.Map(document.getElementById('map'), {
+        zoom: 17,
+        center: latlng,
+      });
+
+      var marker = new googleMaps.Marker({
+        position: latlng,
+        map: map,
+      });
+      
+      // Awful, impure pattern, fix:
+      context.mapInstance = map;
+      context.centerMarker = marker;
+      context.googleMaps = googleMaps;
+
+      googleMaps.event.addListener(context.mapInstance, 'drag', () => {
+        var centerLatLng = map.getCenter();
+        context.centerMarker.setPosition(centerLatLng);
+        console.log('moving to ', centerLatLng);
+      });
     });
-    var marker = new googleMaps.Marker({
-      position: hackReactor,
-      map: map
-    });
-    // Awful, impure pattern, fix:
-    this.mapInstance = map;
-    this.centerMarker = marker;
-    this.googleMaps = googleMaps;
+    
   }
 
   getCoordinates() {
