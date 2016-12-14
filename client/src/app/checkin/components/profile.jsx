@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Login from '../../login/login.jsx';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
@@ -11,30 +12,42 @@ class Profile extends React.Component {
     this.state ={
 
     }
+    const divStyle = {
+    color: 'blue',
+    }
+  };
 
-  const divStyle = {
-  color: 'blue',
-  }
-};
   render(){
-    return(<Table>
-    <TableHeader>
-      <TableRow>
-        <TableHeaderColumn>Rank</TableHeaderColumn>
-        <TableHeaderColumn>Name</TableHeaderColumn>
-        <TableHeaderColumn>Favorite Activity</TableHeaderColumn>
-        <TableHeaderColumn>Place of Origin</TableHeaderColumn>
-      </TableRow>
-    </TableHeader>
-    <TableBody>
-      <TableRow>
-        <TableRowColumn>Elite</TableRowColumn>
-        <TableRowColumn>Blake Fleck</TableRowColumn>
-        <TableRowColumn>BasketBall</TableRowColumn>
-        <TableRowColumn>Houston</TableRowColumn>
-      </TableRow>
-    </TableBody>
-  </Table>)
+    return(
+      <div>
+      <table>
+        <thead>
+          <tr>
+           <th>Name</th>
+           <th>Rank</th>
+           <th>Interests</th>
+           <th>Place of Origin</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {console.log(this.props)}
+            <td>{this.props.username}</td>
+            <td>Elite</td>
+            <td>Basketball</td>
+            <td>H-Town</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    )
   }
 }
+
+const mapStateToProps = (state) => ({
+  username: state.users.username,
+})
+
+Profile = connect(mapStateToProps)(Profile);
+
 export {Profile}
