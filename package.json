@@ -28,6 +28,7 @@
     "load-google-maps-api": "0.0.2",
     "material-ui": "^0.16.5",
     "mongoose": "^4.7.1",
+    "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "q": "^1.4.1",
