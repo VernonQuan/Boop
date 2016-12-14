@@ -23,8 +23,7 @@ var userSchema = new mongoose.Schema({
   history: Array,
   password: String,
   salt: String,
-  favoriteActivity: String,
-  PlaceOfOrigin: String
+  favoriteActivity: String
 });
 
 

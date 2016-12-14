@@ -55,7 +55,7 @@ class Login extends Component {
       email: this.state.email,
       username: this.state.username,
       password: this.state.password,
-      placeOfOrigin: this.state.placeOfOrigin,
+      origin: this.state.placeOfOrigin,
       favoriteActivity: this.state.favoriteActivity
     };
     loginCtrl.signup(newUser)
