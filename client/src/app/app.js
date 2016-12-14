@@ -35,7 +35,7 @@ class App extends React.Component {
             <Route path='/' component={CheckinContainer}/>
             <Route path='/schedule' component={Schedule}/>
             <Route path='/map' component={Map}/>
-            <Route path='/display' component={Display}/>
+            <Route path='/display/:ambitNum' component={Display}/>
           </Route>
         </Router>
       </Provider> 

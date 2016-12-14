@@ -12,35 +12,28 @@ class Profile extends React.Component {
     this.state ={
 
     }
-    const divStyle = {
-    color: 'blue',
-    }
   };
 
   render(){
-    return(
-      <div>
-      <table>
-        <thead>
-          <tr>
-           <th>Name</th>
-           <th>Rank</th>
-           <th>Interests</th>
-           <th>Place of Origin</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-          {console.log(this.props.user)}
-            <td>{this.props.user.username}</td>
-            <td>{this.props.user.rank}</td>
-            <td>{this.props.user.favoriteActivity}</td>
-            <td>{this.props.user.origin}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    )
+     return (
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHeaderColumn>Rank</TableHeaderColumn>
+            <TableHeaderColumn>Name</TableHeaderColumn>
+            <TableHeaderColumn>Favorite Activity</TableHeaderColumn>
+            <TableHeaderColumn>Place of Origin</TableHeaderColumn>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow>
+            <TableRowColumn>{this.props.user.rank}</TableRowColumn>
+            <TableRowColumn>{this.props.user.username}</TableRowColumn>
+            <TableRowColumn>{this.props.user.favoriteActivity}</TableRowColumn>
+            <TableRowColumn>{this.props.user.origin}</TableRowColumn>
+          </TableRow>
+        </TableBody>
+      </Table>)
   }
 }
 
