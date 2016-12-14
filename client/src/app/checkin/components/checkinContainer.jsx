@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addMarker } from '../../actions/index.js';
 import * as Utils from '../../utils/utils.js';
 import AmbitList from './ambitList.jsx';
 import {deepOrange500} from 'material-ui/styles/colors';
@@ -37,11 +39,11 @@ const userFeedback = {
   cheat:'Not at the Location',
   geoNotFount: 'Geolocation feature is not enabled',
   successfulCheckin: 'Check in successful',
-  checkInternetConnection:'Cannot fetch ambits:( Check internet connection'  
+  checkInternetConnection:'Cannot fetch ambits:( Check internet connection'
 };
 
 
-export default class CheckinContainer extends React.Component {
+class CheckinContainer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -54,23 +56,23 @@ export default class CheckinContainer extends React.Component {
         message: userFeedback.default
       }
     };
-    this.handleCheckinAmbit = this.handleCheckinAmbit.bind(this);   
+    this.handleCheckinAmbit = this.handleCheckinAmbit.bind(this);
   }
+
   componentDidMount() {
+    var context = this;
     Utils.getAllAmbits((data, error) => {
       if(error) {
         //send user feedback: no connection
-      } else {       
+      } else {
         this.setState({ambits: data});
+        data.map(function(marker) {
+          context.props.dispatch(addMarker({
+            name: marker.name,
+            coords: marker.coords
+          }));
+        });
       }
-    });
-  }
-
-  getAmbits() {
-    Utils.getAllAmbits((data) => {
-      this.setState({
-        ambits: data
-      });
     });
   }
 
@@ -102,16 +104,17 @@ export default class CheckinContainer extends React.Component {
       return (
         <MuiThemeProvider muiTheme={muiTheme}>
           <div>
-            <AmbitList ambits={this.state.ambits} 
+            <AmbitList ambits={this.state.ambits}
             handleCheckinAmbit={this.handleCheckinAmbit}/>
-            
-            <RaisedButton 
-            // onTouchTap={this.handleCreateAmbit} 
+
+            <RaisedButton
+            // onTouchTap={this.handleCreateAmbit}
             buttonStyle={createStyle}
             containerElement={<Link to='/map'/>}
             fullWidth = {true}
             >Create Ambit</RaisedButton>
-            
+
+
             <Snackbar
             open={this.state.feedback.open}
             message={this.state.feedback.message}
@@ -129,5 +132,9 @@ export default class CheckinContainer extends React.Component {
     }
   }
 };
+
+CheckinContainer = connect()(CheckinContainer);
+
+export default CheckinContainer;
 
 // /<Controls handleCreateAmbit={this.handleCreateAmbit}/>

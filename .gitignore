@@ -40,4 +40,5 @@ jspm_packages
 /client/dist/
 #DS_Store
 *.DS_Store
+.DS_Store
 
