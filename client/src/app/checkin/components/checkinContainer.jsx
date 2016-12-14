@@ -69,11 +69,8 @@ class CheckinContainer extends React.Component {
         console.log(data);
         // Perpetuates db ambits to redux storage and in checkinContainer state
         this.setState({ambits: data});
-        data.map(function(marker) {
-          context.props.dispatch(addMarker({
-            name: marker.name,
-            coords: marker.coords
-          }));
+        data.map(function(ambit) {
+          context.props.dispatch(addMarker(ambit));
         });
       }
     });
