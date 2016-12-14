@@ -12,6 +12,7 @@ module.exports = {
     var email = req.body.email;
     var username = req.body.username;
     var password = req.body.password;
+    console.log(req.body);
     if (!email || !username || !password) {
       res.status(400).json({
         message: "All fields required."
@@ -25,11 +26,7 @@ module.exports = {
             });
             return null;
           } else {
-            return createUser({
-              email: email,
-              username: username,
-              password: password
-            });
+            return createUser(req.body);
           }
         })
         .then(function (user) {
