@@ -31,11 +31,11 @@ class Profile extends React.Component {
         </thead>
         <tbody>
           <tr>
-            {console.log(this.props)}
-            <td>{this.props.username}</td>
-            <td>Elite</td>
-            <td>Basketball</td>
-            <td>H-Town</td>
+          {console.log(this.props.user)}
+            <td>{this.props.user.username}</td>
+            <td>{this.props.user.rank}</td>
+            <td>{this.props.user.favoriteActivity}</td>
+            <td>{this.props.user.origin}</td>
           </tr>
         </tbody>
       </table>
@@ -45,7 +45,7 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  username: state.users.username,
+  user: state.users.user
 })
 
 Profile = connect(mapStateToProps)(Profile);

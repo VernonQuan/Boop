@@ -30,25 +30,16 @@ class Login extends Component {
     };
     loginCtrl.login(returningUser)
     .then(function(res) {
-      console.log('caught res', res.config.data);
-      var signedIn = res.config.data;
       context.setState({
         loginIsOpen: false
       })
       context.props.main.setState({
         isLoggedIn: true
       });
-      context.props.dispatch(logUser(signedIn));
+      // plugs in email and password in an object into dispatch
+      context.props.dispatch(logUser(res.data.userData));
     })
-    // Broke the below code due to changing the return of the loginCtrl.login
-
-/*    .catch(err => {
-      const msg = err.response.data.message;
-      this.setState({
-        submitError: msg
-      });
-    })
-*/  };
+  };
 
   handleSignUp = () => {
     var newUser = {
