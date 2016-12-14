@@ -10,6 +10,8 @@ import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField';
 import Login from './login/login.jsx';
 import * as loginCtrl from './login/loginCtrl';
@@ -31,7 +33,8 @@ class Main extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      isLoggedIn: !!loginCtrl.getJwt()
+      isLoggedIn: !!loginCtrl.getJwt(),
+      open: false
     };
   }
 
@@ -42,6 +45,9 @@ class Main extends Component {
       isLoggedIn: false
     });
   }
+
+  handleDrawerToggle = () => this.setState({open: !this.state.open});
+  handleClose = () => this.setState({open: false});
 
   render() {
     const logOutButton = this.state.isLoggedIn ? 
@@ -58,8 +64,17 @@ class Main extends Component {
         <div>
           <AppBar 
             title='Ambitually'
+            onLeftIconButtonTouchTap={this.handleDrawerToggle}
             iconElementRight={logOutButton}
           />
+          <Drawer 
+            docked={false}
+            open={this.state.open}
+            onRequestChange={(open) => this.setState({open})}
+          >
+            <MenuItem>Profile</MenuItem>
+            <MenuItem>More Stuff</MenuItem>
+          </Drawer>
           {LoginModal}
           {this.props.children}
         </div>

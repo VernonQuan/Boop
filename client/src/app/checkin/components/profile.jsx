@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Login from '../../login/login.jsx';
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+
+
 
 
 class Profile extends React.Component {
@@ -15,9 +18,8 @@ class Profile extends React.Component {
   };
 
   render(){
-
-
-    return(<div>
+    return(
+      <div>
       <table>
         <thead>
           <tr>
@@ -37,7 +39,8 @@ class Profile extends React.Component {
           </tr>
         </tbody>
       </table>
-    </div>)
+    </div>
+    )
   }
 }
 
