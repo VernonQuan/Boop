@@ -39,7 +39,7 @@ const userFeedback = {
   cheat:'Not at the Location',
   geoNotFount: 'Geolocation feature is not enabled',
   successfulCheckin: 'Check in successful',
-  checkInternetConnection:'Cannot fetch ambits:( Check internet connection'  
+  checkInternetConnection:'Cannot fetch ambits:( Check internet connection'
 };
 
 
@@ -56,7 +56,7 @@ class CheckinContainer extends React.Component {
         message: userFeedback.default
       }
     };
-    this.handleCheckinAmbit = this.handleCheckinAmbit.bind(this);   
+    this.handleCheckinAmbit = this.handleCheckinAmbit.bind(this);
   }
 
   componentDidMount() {
@@ -64,7 +64,7 @@ class CheckinContainer extends React.Component {
     Utils.getAllAmbits((data, error) => {
       if(error) {
         //send user feedback: no connection
-      } else {       
+      } else {
         this.setState({ambits: data});
         data.map(function(marker) {
           context.props.dispatch(addMarker({
@@ -104,16 +104,17 @@ class CheckinContainer extends React.Component {
       return (
         <MuiThemeProvider muiTheme={muiTheme}>
           <div>
-            <AmbitList ambits={this.state.ambits} 
+            <AmbitList ambits={this.state.ambits}
             handleCheckinAmbit={this.handleCheckinAmbit}/>
-            
-            <RaisedButton 
-            // onTouchTap={this.handleCreateAmbit} 
+
+            <RaisedButton
+            // onTouchTap={this.handleCreateAmbit}
             buttonStyle={createStyle}
             containerElement={<Link to='/map'/>}
             fullWidth = {true}
             >Create Ambit</RaisedButton>
-            
+
+
             <Snackbar
             open={this.state.feedback.open}
             message={this.state.feedback.message}
