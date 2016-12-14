@@ -84,8 +84,8 @@ class Map extends Component {
       });
 
       // Retrieving from store to render events from db
-      context.props.markers.map(function(marker) {
-        context.populateMap(googleMaps, marker);
+      Object.keys(context.props.markers).map((key) => {
+        context.populateMap(googleMaps, context.props.markers[key]);
       });
     });
   }

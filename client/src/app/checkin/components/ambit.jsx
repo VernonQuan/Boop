@@ -59,7 +59,7 @@ class Ambit extends React.Component {
             style={this.props.ambit.checkedIn ? checkedStyle : notCheckedStyle}
           />
           <FlatButton
-            label={<Link to='/display' style={linkStyle}>Stats</Link>}//send to the stats page of the ambit.
+            label={<Link to={'/display/' + this.props.index} style={linkStyle}>Stats</Link>}//send to the stats page of the ambit.
             style={statsStyle}
           />
         </CardActions> 

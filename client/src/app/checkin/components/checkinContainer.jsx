@@ -61,17 +61,15 @@ class CheckinContainer extends React.Component {
 
   componentDidMount() {
     var context = this;
+    // Collects all ambits from the db
     Utils.getAllAmbits((data, error) => {
       if(error) {
         //send user feedback: no connection
       } else {
+        console.log(data);
+        // Perpetuates db ambits to redux storage and in checkinContainer state
         this.setState({ambits: data});
-        data.map(function(marker) {
-          context.props.dispatch(addMarker({
-            name: marker.name,
-            coords: marker.coords
-          }));
-        });
+        context.props.dispatch(addMarker(data));
       }
     });
   }
@@ -100,11 +98,12 @@ class CheckinContainer extends React.Component {
   handleShowStats(){}
 
   render() {
+    console.log(this.props.markers);
     if(!this.state.loading) {
       return (
         <MuiThemeProvider muiTheme={muiTheme}>
           <div>
-            <AmbitList ambits={this.state.ambits}
+            <AmbitList ambits={this.props.markers}
             handleCheckinAmbit={this.handleCheckinAmbit}/>
 
             <RaisedButton
@@ -133,7 +132,11 @@ class CheckinContainer extends React.Component {
   }
 };
 
-CheckinContainer = connect()(CheckinContainer);
+const mapStateToProps = (state) => ({
+  markers : state.markers
+});
+
+CheckinContainer = connect(mapStateToProps)(CheckinContainer);
 
 export default CheckinContainer;
 
