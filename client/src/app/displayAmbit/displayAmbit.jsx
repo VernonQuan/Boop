@@ -1,9 +1,10 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
 import {List, ListItem} from 'material-ui/List';
 import * as Utils from '../utils/utils.js';
 
-export default class displayAmbit extends React.Component {
+class displayAmbit extends React.Component {
   constructor(props) {
     super(props);
     this.state  = {
@@ -24,8 +25,11 @@ export default class displayAmbit extends React.Component {
   }
 
   render() {
+    console.log(this.props.markers);
     var startDate = new Date(this.state.today.toDateString());
+    console.log(startDate);
     startDate.setDate(startDate.getDate() - 3);
+    console.log(startDate);
     var dates = [];
     for (var i = 0; i < 7; i++){
       var itemInfo = {};
@@ -69,3 +73,11 @@ export default class displayAmbit extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  markers : state.markers
+});
+
+displayAmbit = connect(mapStateToProps)(displayAmbit);
+
+export default displayAmbit;
