@@ -12,6 +12,8 @@ class Login extends Component {
       username: '',
       email: '',
       password: '',
+      favoriteActivity: '',
+      placeOfOrigin: '',
       loginIsOpen: true,
       isSigningUp: false,
       submitError: ''
@@ -44,7 +46,9 @@ class Login extends Component {
     var newUser = {
       email: this.state.email,
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
+      placeOfOrigin: this.state.placeOfOrigin,
+      favoriteActivity: this.state.favoriteActivity
     };
     loginCtrl.signup(newUser)
     .then(res => {
@@ -80,26 +84,41 @@ class Login extends Component {
 
   render() {
     const signUp = this.state.isSigningUp;
-    const signUpField = signUp ? 
-      (<TextField 
+    const origin = signUp ?
+      (<TextField
+        onChange={this.handleChange.bind(this,'placeOfOrigin')}
+        fullWidth={true}
+        hintText='Where you from?' />
+        ) :
+      null;
+    const favoriteActivity = signUp ?
+      (<TextField
+        onChange={this.handleChange.bind(this,'favoriteActivity')}
+        fullWidth={true}
+        hintText='favorite activity' />
+        ) :
+      null;
+    const signUpField = signUp ?
+      (<TextField
         onChange={this.handleChange.bind(this,'username')}
         fullWidth={true}
-        hintText='username' />) :
+        hintText='username' />
+        ) :
       null;
 
     const standardActions = [
       <RaisedButton
         label='Login'
         primary={!this.state.isSigningUp}
-        onTouchTap={(!signUp) ? 
-          this.handleLogin : 
+        onTouchTap={(!signUp) ?
+          this.handleLogin :
           this.toggleSignUp.bind(this)
         }
       />,
       <RaisedButton
         label='Signup'
         primary={this.state.isSigningUp}
-        onTouchTap={(signUp) ? 
+        onTouchTap={(signUp) ?
           this.handleSignUp :
           this.toggleSignUp.bind(this)
         }
@@ -115,10 +134,12 @@ class Login extends Component {
             actions={standardActions}
             modal={true}
           >
-            <TextField 
+            <TextField
               onChange={this.handleChange.bind(this,'email')}
               fullWidth={true}
               hintText='email' />
+            {favoriteActivity}
+            {origin}
             {signUpField}
             <TextField
               onChange={this.handleChange.bind(this,'password')}

@@ -63,3 +63,15 @@ module.exports.getAmbits = function(req, res, next) {
       next(error);
     });
 };
+
+module.exports.deleteAllAmbits = function(req, res, next) {
+  // delete all ambits
+  Ambit.remove().then(function(data) {
+    console.log('Deleted all ambits!');
+    res.send(data);
+  })
+  .catch(function(error) {
+    next(error);
+  })
+};
+
