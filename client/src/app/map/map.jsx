@@ -85,26 +85,34 @@ class Map extends Component {
 
       // Add all pre-made markers to the map
       Utils.getAllAmbits(function(decoratedAmbits) {
-        console.log(decoratedAmbits);
         decoratedAmbits.map(function(marker) {
-          var newMarker = new googleMaps.Marker({
-            map: context.mapInstance,
-            position: {
-              lat: marker.coords.latitude, 
-              lng: marker.coords.longitude,
-            }
-          });
-          var infoWindow = new googleMaps.InfoWindow({
-            content: marker.name
-          });
-          newMarker.addListener('click', function() {
-            infoWindow.open(context.mapInstance, this);
-          });
+          context.populateMap(googleMaps, marker);
+          console.log('getting here line 90');
         });
-      }
-      //context.props.dispatch
+      });
     });
-    
+  }
+
+  populateMap(googleMaps, marker) {
+    var context = this;
+    console.log(googleMaps);
+    var newMarker = new googleMaps.Marker({
+      map: context.mapInstance,
+      position: {
+        lat: marker.coords.latitude, 
+        lng: marker.coords.longitude,
+      }
+    });
+
+    var infoWindow = new googleMaps.InfoWindow({
+      content: marker.name
+    });
+    console.log('infowindow made');
+    newMarker.addListener('click', function() {
+      console.log('opening');
+      infoWindow.open(context.mapInstance, newMarker);
+    });
+    console.log('added event listener');
   }
 
   getCoordinates() {
