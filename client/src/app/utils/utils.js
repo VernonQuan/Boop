@@ -40,14 +40,8 @@ const daysOftheWeek = function(boolArr) {
     6:'Sa'
   };
   var result ='';
-  var displayDays = boolArr.map((b, i) => {
-    b ? days.i : b;
-  }).filter(d => (!!d)).forEach((day, i, a) => {
-    if(i === a.length) {
-      result += day;
-    } else {
-      result += day + '/';
-    }
+  boolArr.map((dayBool, i) => {
+    dayBool ? result += days[i] + ' ' : null;
   });
   return result;
 };
