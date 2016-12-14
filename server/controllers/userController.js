@@ -1,6 +1,6 @@
 var passport = require('passport');
 var mongoose = require('mongoose');
-var User = mongoose.model('User');
+var User = require('../users/userModel.js');
 var jwt = require('jwt-simple');
 var Q = require('q');
 
