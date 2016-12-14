@@ -133,7 +133,11 @@ class CheckinContainer extends React.Component {
   }
 };
 
-CheckinContainer = connect()(CheckinContainer);
+const mapStateToProps = (state) => ({
+  markers : state.markers
+});
+
+CheckinContainer = connect(mapStateToProps)(CheckinContainer);
 
 export default CheckinContainer;
 

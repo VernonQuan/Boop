@@ -5,8 +5,8 @@ import {Profile} from './profile.jsx';
 const AmbitList = (props) => {
   return (<div className='ambitList'>
   {
-    props.ambits.map(item =>
-      (<Ambit ambit={item} handleCheckinAmbit={props.handleCheckinAmbit}/>))
+    props.ambits.map((item, index) =>
+      (<Ambit index={index} ambit={item} handleCheckinAmbit={props.handleCheckinAmbit}/>))
   }
   <Profile/>
   </div>);
