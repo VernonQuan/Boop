@@ -83,19 +83,16 @@ class Map extends Component {
         context.centerMarker.setPosition(centerLatLng);
       });
 
-      // Add all pre-made markers to the map
-      Utils.getAllAmbits(function(decoratedAmbits) {
-        decoratedAmbits.map(function(marker) {
-          context.populateMap(googleMaps, marker);
-          console.log('getting here line 90');
-        });
+      // Retrieving from store to render events from db
+      context.props.markers.map(function(marker) {
+        context.populateMap(googleMaps, marker);
       });
     });
   }
 
+  // helper function to populate map with markers of made events
   populateMap(googleMaps, marker) {
     var context = this;
-    console.log(googleMaps);
     var newMarker = new googleMaps.Marker({
       map: context.mapInstance,
       position: {
@@ -107,12 +104,9 @@ class Map extends Component {
     var infoWindow = new googleMaps.InfoWindow({
       content: marker.name
     });
-    console.log('infowindow made');
     newMarker.addListener('click', function() {
-      console.log('opening');
       infoWindow.open(context.mapInstance, newMarker);
     });
-    console.log('added event listener');
   }
 
   getCoordinates() {
@@ -145,7 +139,7 @@ class Map extends Component {
 export { Coords }; //there is single-entry point to schedule and it is through maps.
 
 const mapStateToProps = (state) => ({
-  markers : state
+  markers : state.markers
 });
 
 Map = connect(mapStateToProps)(Map);

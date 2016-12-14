@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addMarker } from '../../actions/index.js';
 import * as Utils from '../../utils/utils.js';
 import AmbitList from './ambitList.jsx';
 import {deepOrange500} from 'material-ui/styles/colors';
@@ -41,7 +43,7 @@ const userFeedback = {
 };
 
 
-export default class CheckinContainer extends React.Component {
+class CheckinContainer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -56,21 +58,21 @@ export default class CheckinContainer extends React.Component {
     };
     this.handleCheckinAmbit = this.handleCheckinAmbit.bind(this);   
   }
+
   componentDidMount() {
+    var context = this;
     Utils.getAllAmbits((data, error) => {
       if(error) {
         //send user feedback: no connection
       } else {       
         this.setState({ambits: data});
+        data.map(function(marker) {
+          context.props.dispatch(addMarker({
+            name: marker.name,
+            coords: marker.coords
+          }));
+        });
       }
-    });
-  }
-
-  getAmbits() {
-    Utils.getAllAmbits((data) => {
-      this.setState({
-        ambits: data
-      });
     });
   }
 
@@ -129,5 +131,9 @@ export default class CheckinContainer extends React.Component {
     }
   }
 };
+
+CheckinContainer = connect()(CheckinContainer);
+
+export default CheckinContainer;
 
 // /<Controls handleCreateAmbit={this.handleCreateAmbit}/>
