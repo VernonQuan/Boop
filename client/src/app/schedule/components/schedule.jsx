@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addMarker } from '../../actions/index.js';
 import DropDownList from './dropdown.jsx';
 import CommitButton from './commitButton.jsx';
 import StartDate from './startDate.jsx';
@@ -11,7 +13,7 @@ import * as Utils from '../../utils/utils.js';
 import {Coords} from '../../map/map.jsx';
 
 
-export default class ScheduleContainer extends React.Component {
+class ScheduleContainer extends React.Component {
   constructor (props) {
     super(props);
 
@@ -71,11 +73,17 @@ export default class ScheduleContainer extends React.Component {
   }
 
   onScheduleAmbit() {
+    var context = this;
     var ambitState = this.state;
     console.log(ambitState);
 
+    // Sends new ambit to database and stores the ambit in redux storage
     Utils.postAmbit(ambitState, function() {
       console.log('posted!');
+      context.props.dispatch(addMarker({
+        name: ambitState.name,
+        coords: ambitState.coords,
+      }));
     });
   }
 
@@ -183,3 +191,7 @@ onSelectDaysInputSaturday(event, checked) {
     );
   }
 }
+
+ScheduleContainer = connect()(ScheduleContainer);
+
+export default ScheduleContainer;
