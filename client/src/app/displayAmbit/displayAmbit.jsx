@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
 import {List, ListItem} from 'material-ui/List';
 import * as Utils from '../utils/utils.js';
@@ -12,7 +11,7 @@ class displayAmbit extends React.Component {
 
       //hardcoded data for mock-up purposes
       ambit: {weekdays: [true,true,false,true,false,true,true]}, //mon, wed, fri, sat, sun
-      log: {"Sat Dec 10 2016": true, "Mon Dec 12 2016": true}
+      log: {"Sun Dec 11 2016": true, "Tue Dec 13 2016": true}
     }
   }
 
@@ -25,11 +24,14 @@ class displayAmbit extends React.Component {
   }
 
   render() {
-    console.log(this.props.markers);
+    console.log(this.props.params.ambitNum);
+    // test ambit populated from redux
+    var testAmbit = this.props.markers[this.props.params.ambitNum];
     var startDate = new Date(this.state.today.toDateString());
-    console.log(startDate);
+    // sets startDate back 3 days
     startDate.setDate(startDate.getDate() - 3);
     console.log(startDate);
+
     var dates = [];
     for (var i = 0; i < 7; i++){
       var itemInfo = {};
@@ -39,8 +41,7 @@ class displayAmbit extends React.Component {
       itemInfo.date = itemDate;
 
       //if this list item's day of the week doesn't match ambit.weekdays
-      console.log(itemDate.getDay);
-      if(this.state.ambit.weekdays[itemDate.getDay()] === false){
+      if(testAmbit.weekdays[itemDate.getDay()] === false){
         itemInfo.status = 'Free';
       }
       else{
