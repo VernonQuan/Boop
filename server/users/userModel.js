@@ -13,7 +13,9 @@ var userSchema = new mongoose.Schema({
     required: true
   },
   password: String,
-  salt: String
+  salt: String,
+  favoriteActivity: String,
+  PlaceOfOrigin: String
 });
 
 
