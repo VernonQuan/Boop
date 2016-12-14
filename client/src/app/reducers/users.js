@@ -1,8 +1,8 @@
-const users = (state = {username: ''}, action) => {
+const users = (state = {user: {}}, action) => {
   switch (action.type) {
     case 'LOG_USER':
       return {
-        username: action.user
+        user: action.user
       }
 
     default:

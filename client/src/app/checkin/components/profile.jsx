@@ -15,29 +15,30 @@ class Profile extends React.Component {
   };
 
   render(){
-     return(<Table>
-    <TableHeader>
-      <TableRow>
-        <TableHeaderColumn>Rank</TableHeaderColumn>
-        <TableHeaderColumn>Name</TableHeaderColumn>
-        <TableHeaderColumn>Favorite Activity</TableHeaderColumn>
-        <TableHeaderColumn>Place of Origin</TableHeaderColumn>
-      </TableRow>
-    </TableHeader>
-    <TableBody>
-      <TableRow>
-        <TableRowColumn>Elite</TableRowColumn>
-        <TableRowColumn>Blake Fleck</TableRowColumn>
-        <TableRowColumn>BasketBall</TableRowColumn>
-        <TableRowColumn>Houston</TableRowColumn>
-      </TableRow>
-    </TableBody>
-  </Table>)
+     return (
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHeaderColumn>Rank</TableHeaderColumn>
+            <TableHeaderColumn>Name</TableHeaderColumn>
+            <TableHeaderColumn>Favorite Activity</TableHeaderColumn>
+            <TableHeaderColumn>Place of Origin</TableHeaderColumn>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow>
+            <TableRowColumn>{this.props.user.rank}</TableRowColumn>
+            <TableRowColumn>{this.props.user.username}</TableRowColumn>
+            <TableRowColumn>{this.props.user.favoriteActivity}</TableRowColumn>
+            <TableRowColumn>{this.props.user.origin}</TableRowColumn>
+          </TableRow>
+        </TableBody>
+      </Table>)
   }
 }
 
 const mapStateToProps = (state) => ({
-  username: state.users.username,
+  user: state.users.user
 })
 
 Profile = connect(mapStateToProps)(Profile);
