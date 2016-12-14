@@ -12,6 +12,15 @@ var userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  coords: {
+    latitude: Number,
+    longitude: Number
+  },
+  rank: Number,
+  picture: String,
+  origin: String,
+  interests: Array,
+  history: Array,
   password: String,
   salt: String,
   favoriteActivity: String,
