@@ -1,10 +1,10 @@
-const markers = (state = [], action) => {
+const markers = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_MARKER':
-      return [
+      return {
         ...state,
-        action.newMarker,
-      ];
+        [action.newMarker._id]: action.newMarker,
+      };
     default: 
       return state;
   }

@@ -100,11 +100,12 @@ class CheckinContainer extends React.Component {
   handleShowStats(){}
 
   render() {
+    console.log(this.props.markers);
     if(!this.state.loading) {
       return (
         <MuiThemeProvider muiTheme={muiTheme}>
           <div>
-            <AmbitList ambits={this.state.ambits}
+            <AmbitList ambits={this.props.markers}
             handleCheckinAmbit={this.handleCheckinAmbit}/>
 
             <RaisedButton
