@@ -12,7 +12,6 @@ module.exports = {
     var email = req.body.email;
     var username = req.body.username;
     var password = req.body.password;
-
     if (!email || !username || !password) {
       res.status(400).json({
         message: "All fields required."
@@ -36,7 +35,7 @@ module.exports = {
         .then(function (user) {
           if (user) {
             var token = jwt.encode(user, process.env.JWT_SECRET || 'ancient dev secret');
-            res.json({"token": token});
+            res.json({"token": token, userData: user});
           }
         })
         .fail(function (error) {
@@ -64,7 +63,7 @@ module.exports = {
         }
         if (user) {
           token = jwt.encode(user, process.env.JWT_SECRET || 'ancient dev secret');
-          res.json({token: token});
+          res.json({token: token, userData: user});
         } else {
           res.status(400).json({
             message: "Incorrect username or password."
