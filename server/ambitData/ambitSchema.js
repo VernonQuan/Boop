@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
-var User = require('User');
+var User = require('../users/userModel');
 
 var ambitSchema = new Schema({
   refId: {type: Number, index: true}, //a number used to keep track of the ambit
@@ -15,7 +15,7 @@ var ambitSchema = new Schema({
   limit: Number,
   joinedUsers: Array,
   endDate: [Date],
-  userId:  {type: Schema.Types.ObjectId, ref: 'User'}
+  userId:  {type: Schema.Types.ObjectId, ref: 'User'},
   checkIns: [Date] // a history of successful check-ins
   //time (when during the day are you supposed to check in)
   //repeats (every week? every other week? is this necessary?)
