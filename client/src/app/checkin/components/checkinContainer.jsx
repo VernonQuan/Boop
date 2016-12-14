@@ -61,10 +61,13 @@ class CheckinContainer extends React.Component {
 
   componentDidMount() {
     var context = this;
+    // Collects all ambits from the db
     Utils.getAllAmbits((data, error) => {
       if(error) {
         //send user feedback: no connection
       } else {
+        console.log(data);
+        // Perpetuates db ambits to redux storage and in checkinContainer state
         this.setState({ambits: data});
         data.map(function(marker) {
           context.props.dispatch(addMarker({
