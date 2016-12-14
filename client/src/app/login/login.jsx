@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { logUser } from '../actions/index.js';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
@@ -19,26 +21,32 @@ class Login extends Component {
   };
 
   handleLogin = () => {
+    var context = this;
     var returningUser = {
       email: this.state.email,
       password: this.state.password
     };
     loginCtrl.login(returningUser)
-    .then(res => {
-      this.setState({
+    .then(function(res) {
+      console.log('caught res', res.config.data);
+      var signedIn = res.config.data;
+      context.setState({
         loginIsOpen: false
       })
-      this.props.main.setState({
+      context.props.main.setState({
         isLoggedIn: true
       });
+      context.props.dispatch(logUser(signedIn));
     })
-    .catch(err => {
+    // Broke the below code due to changing the return of the loginCtrl.login
+
+/*    .catch(err => {
       const msg = err.response.data.message;
       this.setState({
         submitError: msg
       });
     })
-  };
+*/  };
 
   handleSignUp = () => {
     var newUser = {
@@ -131,5 +139,7 @@ class Login extends Component {
     );
   }
 }
+
+Login = connect()(Login);
 
 export default Login;

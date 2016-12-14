@@ -1,8 +1,9 @@
-const users = (state = {}, action) => {
+const users = (state = {username: ''}, action) => {
   switch (action.type) {
-    case 'ADD_USER':
-      // NEED TO UPDATE BASED ON USER SCHEMA
-      return state
+    case 'LOG_USER':
+      return {
+        username: action.user
+      }
 
     default:
       return state

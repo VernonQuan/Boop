@@ -7,9 +7,18 @@ const tokenKey = 'auth.ambitually';
 const setToken = (res) =>
   window.localStorage.setItem(tokenKey, res.data.token);
 
+// Previous code for login
+/*export const login = (user) => 
+  axios.post('/login', user)
+  .then(res => setToken(res));*/
+
 export const login = (user) => 
   axios.post('/login', user)
-  .then(res => setToken(res));
+  .then(function(res) {
+    console.log('result is', res);
+    setToken(res);
+    return res;
+  });
 
 export const signup = (user) => 
   axios.post('/register',user)

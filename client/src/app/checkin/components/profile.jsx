@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Login from '../../login/login.jsx';
 
 
@@ -8,12 +9,14 @@ class Profile extends React.Component {
     this.state ={
 
     }
+    const divStyle = {
+    color: 'blue',
+    }
+  };
 
-  const divStyle = {
-  color: 'blue',
-  }
-};
   render(){
+
+
     return(<div>
       <table>
         <thead>
@@ -26,7 +29,8 @@ class Profile extends React.Component {
         </thead>
         <tbody>
           <tr>
-            <td>Blake</td>
+            {console.log(this.props)}
+            <td>{this.props.username}</td>
             <td>Elite</td>
             <td>Basketball</td>
             <td>H-Town</td>
@@ -36,4 +40,11 @@ class Profile extends React.Component {
     </div>)
   }
 }
+
+const mapStateToProps = (state) => ({
+  username: state.users.username,
+})
+
+Profile = connect(mapStateToProps)(Profile);
+
 export {Profile}

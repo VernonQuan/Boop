@@ -4,3 +4,10 @@ export const addMarker = (newMarker) => {
     newMarker
   }
 }
+
+export const logUser = (user) => {
+  return {
+    type: 'LOG_USER',
+    user
+  }
+}
