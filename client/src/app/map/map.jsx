@@ -36,16 +36,6 @@ class Map extends Component {
     this.mapInstance = {};
     this.googleMaps = {};
     this.centerMarker = {};
-
-    this.socket = io();
-
-    this.state = {
-      feedback: {
-        open: false,
-        autoHideDuration: 3000,
-        message: '',
-      }
-    }
   }
   componentDidMount() {
     // This is public; restricted by IP
@@ -54,12 +44,6 @@ class Map extends Component {
       v: '3.25'
     }).then((googleMaps) => {
       this.initMap(googleMaps); // sets instance vars atm
-    });
-    // listen for state changes on socket
-    var context = this;
-    this.socket.on('join', function(boop, user) {
-      console.log(user, 'joined', boop);
-      context.setState({feedback: {...context.state.feedback, open: true, message: user + ' joined ' + boop }});
     });
   }
 
@@ -81,13 +65,13 @@ class Map extends Component {
       // Creates map object for rendering 
       var map = new googleMaps.Map(document.getElementById('map'), {
         zoom: 17,
-        center: hackReactor,
+        center: latlng,
       });
 
       // Creates a marker at the current location
       // UPDATE: Maybe make it draggable?
       var marker = new googleMaps.Marker({
-        position: hackReactor,
+        position: latlng,
         map: map,
         draggable: true,
         icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
@@ -155,11 +139,6 @@ class Map extends Component {
         // containerElement={<Link to='/schedule'/>}
         fullWidth={false}
         ></RaisedButton>
-
-        <Snackbar
-          open={this.state.feedback.open}
-          message={this.state.feedback.message}
-          autoHideDuration={this.state.feedback.autoHideDuration}/>
 
       </div>
     )
