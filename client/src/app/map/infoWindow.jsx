@@ -53,7 +53,7 @@ class InfoWindow extends React.Component {
         <CardHeader
           title = {this.props.boop.name}
           avatar = "http://www.19130fitness.com/wp-content/uploads/2015/07/crossfit-barbell.png"
-          subtitle = {this.props.boop.frequency}/>
+          subtitle = {"Owner: Test Frequency: " + this.props.boop.frequency}/>
         <CardActions>
           <FlatButton
             label= 'Join'
