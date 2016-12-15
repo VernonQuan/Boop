@@ -57,6 +57,7 @@ class Login extends Component {
       this.props.main.setState({
         isLoggedIn: true
       });
+
     })
     .catch(err => {
       const msg = err.response.data.message;

@@ -39,22 +39,18 @@ class Main extends Component {
     };
   }
 
-  onProfileClick(){
-    console.log('clicked');
-  }
-
   handleLogout() {
     loginCtrl.logout();
     this.setState({
       isLoggedIn: false
     });
   }
-
+  
   handleDrawerToggle = () => this.setState({open: !this.state.open});
   handleClose = () => this.setState({open: false});
 
   render() {
-    const logOutButton = this.state.isLoggedIn ? 
+    const logOutButton = this.state.isLoggedIn ?
       (<FlatButton label="Logout"
         onTouchTap={this.handleLogout.bind(this)}
        />
@@ -66,20 +62,22 @@ class Main extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <AppBar 
-            title='Boopually'
+          <AppBar
+            title='Boop!'
             onLeftIconButtonTouchTap={this.handleDrawerToggle}
             iconElementRight={logOutButton}
           />
-          <Drawer 
+          <Drawer
             docked={false}
             open={this.state.open}
             onRequestChange={(open) => this.setState({open})}
           >
-            <MenuItem> 
-              <Link to="/displayProfile">Profile</Link>
+            <MenuItem>
+              <Link to="/" onClick={this.handleDrawerToggle}>Main Page</Link>
             </MenuItem>
-            <MenuItem>More Stuff</MenuItem>
+            <MenuItem>
+              <Link to="/displayProfile" onClick={this.handleDrawerToggle}>Profile</Link>
+            </MenuItem>
           </Drawer>
           {LoginModal}
           {this.props.children}

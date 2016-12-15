@@ -36,8 +36,8 @@ class CommitButton extends React.Component {
         label="SCHEDULE"
         style={style}
         onTouchTap={this.onClick}
-       // create boop using date, name etc from current state
-        />
+        disabled={!this.props.currentState.weekdays.reduce((a,b) => a || b)}/>
+        
         <Snackbar
           open={this.state.open}
           message='Boop added'
