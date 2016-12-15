@@ -19,6 +19,7 @@ app.use('/boops', boopRouter);
 
 app.post('/register', userCtrl.register);
 app.post('/login', userCtrl.login);
+app.get('/api/users', userCtrl.allUsers);
 
 // To use on Heroku, set the environment variable:
 // $ heroku set:config MONGOLAB_URL=mongodb://user:password@mongolabstuff
