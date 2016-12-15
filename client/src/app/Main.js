@@ -39,10 +39,6 @@ class Main extends Component {
     };
   }
 
-  onProfileClick(){
-    console.log('clicked');
-  }
-
   handleLogout() {
     loginCtrl.logout();
     this.setState({
@@ -54,7 +50,7 @@ class Main extends Component {
   handleClose = () => this.setState({open: false});
 
   render() {
-    const logOutButton = this.state.isLoggedIn ? 
+    const logOutButton = this.state.isLoggedIn ?
       (<FlatButton label="Logout"
         onTouchTap={this.handleLogout.bind(this)}
        />
@@ -71,13 +67,13 @@ class Main extends Component {
             onLeftIconButtonTouchTap={this.handleDrawerToggle}
             iconElementRight={logOutButton}
           />
-          <Drawer 
+          <Drawer
             docked={false}
             open={this.state.open}
             onRequestChange={(open) => this.setState({open})}
           >
-            <MenuItem> 
-              <Link to="/displayProfile">Profile</Link>
+            <MenuItem>
+              <Link to="/displayProfile" onClick={this.handleDrawerToggle}>Profile</Link>
             </MenuItem>
             <MenuItem>More Stuff</MenuItem>
           </Drawer>
