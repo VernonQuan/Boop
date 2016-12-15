@@ -6,6 +6,7 @@ var Q = require('q');
 
 var findUser = Q.nbind(User.findOne, User);
 var createUser = Q.nbind(User.create, User);
+var findAllUsers = Q.nbind(User.find, User);
 
 module.exports = {
   register: function (req, res, next) {
@@ -68,5 +69,15 @@ module.exports = {
         }
       })(req, res);
     }
+  },
+
+  allUsers: function (req, res, next) {
+    User.find({}, function(err, users) {
+      if (err) {
+        res.status(400).json({message: 'Unable to retrieve users'});
+      } else {
+        res.json(users);
+      }
+    })
   }
 };
