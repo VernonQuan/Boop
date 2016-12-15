@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Login from '../../login/login.jsx';
+import Login from '../login/login.jsx';
 
 import {List, ListItem} from 'material-ui/List';
 import * as Utils from '../utils/utils.js';

@@ -1,4 +1,4 @@
-# Ambitually (formerly Ambits)
+# Boopually (formerly Boops)
 Mobile-first web application for habit tracking and location-based accountability
 
 > Bet on Tomrrow, Today!
@@ -51,7 +51,7 @@ Lastly, make sure to set the following environment variable on Heroku, using `he
 
 ### Roadmap
 
-View the project roadmap [here](https://github.com/CellularAnathema/ambits)
+View the project roadmap [here](https://github.com/CellularAnathema/boops)
 
 
 ## Contributing

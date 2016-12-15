@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addMarker } from '../../actions/index.js';
 import * as Utils from '../../utils/utils.js';
-import AmbitList from './ambitList.jsx';
+import BoopList from './boopList.jsx';
 import {deepOrange500} from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -39,7 +39,7 @@ const userFeedback = {
   cheat:'Not at the Location',
   geoNotFount: 'Geolocation feature is not enabled',
   successfulCheckin: 'Check in successful',
-  checkInternetConnection:'Cannot fetch ambits:( Check internet connection'
+  checkInternetConnection:'Cannot fetch boops:( Check internet connection'
 };
 
 
@@ -48,7 +48,7 @@ class CheckinContainer extends React.Component {
     super(props);
 
     this.state = {
-      ambits: [],
+      boops: [],
       loading: false,
       feedback: {
         open: false,
@@ -56,37 +56,37 @@ class CheckinContainer extends React.Component {
         message: userFeedback.default
       }
     };
-    this.handleCheckinAmbit = this.handleCheckinAmbit.bind(this);
+    this.handleCheckinBoop = this.handleCheckinBoop.bind(this);
   }
 
   componentDidMount() {
     var context = this;
-    // Collects all ambits from the db
-    Utils.getAllAmbits((data, error) => {
+    // Collects all boops from the db
+    Utils.getAllBoops((data, error) => {
       if(error) {
         //send user feedback: no connection
       } else {
         console.log(data);
-        // Perpetuates db ambits to redux storage and in checkinContainer state
-        this.setState({ambits: data});
+        // Perpetuates db boops to redux storage and in checkinContainer state
+        this.setState({boops: data});
         context.props.dispatch(addMarker(data));
       }
     });
   }
 
-  handleCheckinAmbit(ambit) {
+  handleCheckinBoop(boop) {
     this.setState({loading: true}); //loading...
     //validate checkin:
-    Utils.checkinAmbit(ambit, () => {
+    Utils.checkinBoop(boop, () => {
       //if valid update the state
-      this.state.ambits.find(item => ambit.name === item.name).checkedIn = true;
+      this.state.boops.find(item => boop.name === item.name).checkedIn = true;
       this.setState({
         loading:false,
-        ambits: this.state.ambits,
+        boops: this.state.boops,
         feedback: {open: true, message: userFeedback.successfulCheckin}
       });
       //update the database
-      Utils.postCheckin(ambit.refId, () => {
+      Utils.postCheckin(boop.refId, () => {
         console.log('delivered');
       });
     }, ()=>{
@@ -103,15 +103,15 @@ class CheckinContainer extends React.Component {
       return (
         <MuiThemeProvider muiTheme={muiTheme}>
           <div>
-            <AmbitList ambits={this.props.markers}
-            handleCheckinAmbit={this.handleCheckinAmbit}/>
+            <BoopList boops={this.props.markers}
+            handleCheckinBoop={this.handleCheckinBoop}/>
 
             <RaisedButton
-            // onTouchTap={this.handleCreateAmbit}
+            // onTouchTap={this.handleCreateBoop}
             buttonStyle={createStyle}
             containerElement={<Link to='/map'/>}
             fullWidth = {true}
-            >Create Ambit</RaisedButton>
+            >Create Boop</RaisedButton>
 
 
             <Snackbar
@@ -140,4 +140,4 @@ CheckinContainer = connect(mapStateToProps)(CheckinContainer);
 
 export default CheckinContainer;
 
-// /<Controls handleCreateAmbit={this.handleCreateAmbit}/>
+// /<Controls handleCreateBoop={this.handleCreateBoop}/>

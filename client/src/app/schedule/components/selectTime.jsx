@@ -4,7 +4,7 @@ import TimePicker from 'material-ui/TimePicker';
 const SelectTime = (props) => (
   <div>
     <TimePicker
-      hintText="Select Ambit Time"
+      hintText="Select Boop Time"
       autoOk={true}
       onChange= {props.onSelectTime}
     />

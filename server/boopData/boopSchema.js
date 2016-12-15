@@ -3,8 +3,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var User = require('../users/userModel');
 
-var ambitSchema = new Schema({
-  refId: {type: Number, index: true}, //a number used to keep track of the ambit
+var boopSchema = new Schema({
+  refId: {type: Number, index: true}, //a number used to keep track of the boop
   name: String,
   coords: {
     latitude: Number,
@@ -21,6 +21,6 @@ var ambitSchema = new Schema({
   //repeats (every week? every other week? is this necessary?)
 });
 
-var Ambit = mongoose.model('Ambit', ambitSchema);
+var Boop = mongoose.model('Boop', boopSchema);
 
-module.exports = Ambit;
+module.exports = Boop;

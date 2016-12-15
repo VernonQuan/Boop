@@ -1,14 +1,14 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
 
-const AmbitNameInput = (props) => (
+const BoopNameInput = (props) => (
   <div>
     <TextField
-      hintText= "Ambit Name"
-      // errorText="Please enter an Ambit Name"
+      hintText= "Boop Name"
+      // errorText="Please enter an Boop Name"
       onChange={props.onNameInput}
     />
   </div>
 );
 
-export default AmbitNameInput;
+export default BoopNameInput;

@@ -8,6 +8,6 @@ const style = {
 
 export default const Controls = (props) => {
   return (<div>
-   <FlatButton onTouchTap={props.handleCreateAmbit}>Create Ambit</FlatButton>
+   <FlatButton onTouchTap={props.handleCreateBoop}>Create Boop</FlatButton>
     </div>);
 };  

@@ -5,7 +5,7 @@ import DropDownList from './dropdown.jsx';
 import CommitButton from './commitButton.jsx';
 import StartDate from './startDate.jsx';
 import SelectDays from './selectDays.jsx';
-import AmbitNameInput from './ambitNameInput.jsx';
+import BoopNameInput from './boopNameInput.jsx';
 import SelectTime from './selectTime.jsx';
 import SelectFrequency from './selectFrequency.jsx';
 import Divider from 'material-ui/Divider';
@@ -34,7 +34,7 @@ class ScheduleContainer extends React.Component {
     this.onNameInput = this.onNameInput.bind(this);
     this.onStartDateSet = this.onStartDateSet.bind(this);
     this.onSelectTime = this.onSelectTime.bind(this);
-    this.onScheduleAmbit = this.onScheduleAmbit.bind(this);
+    this.onScheduleBoop = this.onScheduleBoop.bind(this);
     // this.onFrequencyChange = this.onFrequencyChange.bind(this);
     // this.onDropDownSelect = this.onDropDownSelect.bind(this);
     this.onSelectDays = {
@@ -72,17 +72,17 @@ class ScheduleContainer extends React.Component {
     // console.log(this.state);
   }
 
-  onScheduleAmbit() {
+  onScheduleBoop() {
     var context = this;
-    var ambitState = this.state;
-    console.log(ambitState);
+    var boopState = this.state;
+    console.log(boopState);
 
-    // Sends new ambit to database and stores the ambit in redux storage
-    Utils.postAmbit(ambitState, function() {
+    // Sends new boop to database and stores the boop in redux storage
+    Utils.postBoop(boopState, function() {
       console.log('posted!');
       context.props.dispatch(addMarker({
-        name: ambitState.name,
-        coords: ambitState.coords,
+        name: boopState.name,
+        coords: boopState.coords,
       }));
     });
   }
@@ -162,7 +162,7 @@ onSelectDaysInputSaturday(event, checked) {
     return (
       <div>
         <div>
-          <AmbitNameInput
+          <BoopNameInput
             onNameInput={this.onNameInput}
             name={this.state.name}
             />
@@ -185,7 +185,7 @@ onSelectDaysInputSaturday(event, checked) {
         <div>
           <CommitButton
             currentState = {this.state}
-            onScheduleAmbit = {this.onScheduleAmbit}/>
+            onScheduleBoop = {this.onScheduleBoop}/>
         </div>
       </div>
     );

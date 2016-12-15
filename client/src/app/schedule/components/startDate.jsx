@@ -4,7 +4,7 @@ import DatePicker from 'material-ui/DatePicker';
 const StartDate = (props) => (
   <div>
     <DatePicker
-    hintText="Select Ambit Start Date"
+    hintText="Select Boop Start Date"
     value = {props.startDate}
     onChange= {props.onStartDateSet}
     autoOk= {true}

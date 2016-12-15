@@ -3,7 +3,7 @@ import axios from 'axios';
 
 //private helper functions:
 var validateLocation = function (current, checkin) {
-  const MIN_DIST = 200; // acceptable distance between ambit loc and checkin loc
+  const MIN_DIST = 200; // acceptable distance between boop loc and checkin loc
 
   var rad = function(x) {
     return x * Math.PI / 180;
@@ -28,7 +28,7 @@ var validateLocation = function (current, checkin) {
   }
 };
 
-//calculate ambit frequency and process for display
+//calculate boop frequency and process for display
 const daysOftheWeek = function(boolArr) {
   var days = {
     0:'Su',
@@ -46,35 +46,35 @@ const daysOftheWeek = function(boolArr) {
   return result;
 };
 
-//Decorate ambits for client side
-const decorateAmbits = function(ambits) {
-  ambits.forEach(ambit => {
-    if(ambit.weekdays.every(day => day === true)) {
-      ambit.frequency = 'Daily';
+//Decorate boops for client side
+const decorateBoops = function(boops) {
+  boops.forEach(boop => {
+    if(boop.weekdays.every(day => day === true)) {
+      boop.frequency = 'Daily';
     } else {
-      ambit.frequency = 'Weekly - '+ daysOftheWeek(ambit.weekdays);
+      boop.frequency = 'Weekly - '+ daysOftheWeek(boop.weekdays);
     }
     //TODO: clean the server side check.
     //check if the user is already checked in for the day:
     //TODO: make the date time specific.
     var now = (new Date()).toDateString();
-    var recentCheckin = ambit.checkIns[ambit.checkIns.length - 1];
+    var recentCheckin = boop.checkIns[boop.checkIns.length - 1];
     if(recentCheckin && recentCheckin.toDateString() === now) {
-      ambit.checkedIn = true;
+      boop.checkedIn = true;
     } else {
-      ambit.checkedIn = false;
+      boop.checkedIn = false;
     }
   });
-  return ambits;
+  return boops;
 };
 
 const url = '';
 
 //public functions:
-export const postCheckin = function (ambitId, callback) {
+export const postCheckin = function (boopId, callback) {
   axios({
     method:'post',
-    url:'/ambits/' + ambitId,
+    url:'/boops/' + boopId,
     contentType: 'application/json'
     }).then(function(response){
       callback();
@@ -83,12 +83,12 @@ export const postCheckin = function (ambitId, callback) {
     });
 };
 
-export const postAmbit = function (ambit, callback){
+export const postBoop = function (boop, callback){
   axios({
     method:'post',
-    url:'/ambits',
+    url:'/boops',
     contentType: 'application/json',
-    data: {ambit: ambit}
+    data: {boop: boop}
     }).then(function(response){
       callback(response, null);
     }).catch(function(error) {
@@ -96,10 +96,10 @@ export const postAmbit = function (ambit, callback){
     });
 };
 
-export const getAllAmbits = function(callback) {
+export const getAllBoops = function(callback) {
   axios({
     method: 'get',
-    url: url + '/ambits',
+    url: url + '/boops',
     contentType: 'application/json',
   }).then(function(response) {
     //testing comment out 
@@ -125,21 +125,21 @@ export const getAllAmbits = function(callback) {
         startDate:'2016-12-12',
         checkIns:[]
         });
-    callback(decorateAmbits(response.data));
+    callback(decorateBoops(response.data));
   }).catch(function(error){
     throw error;
   });
 };
 
 
-export const checkinAmbit = function(ambit, successCb,errorCb) {
+export const checkinBoop = function(boop, successCb,errorCb) {
   //get current location
   if (navigator.geolocation) {
   /* geolocation is available */
   navigator.geolocation.getCurrentPosition(function(position) {
     console.log(position.coords);
     var coordinates = position.coords;
-    if(validateLocation(ambit.coords, coordinates)) {
+    if(validateLocation(boop.coords, coordinates)) {
       console.log('valid');
       successCb();
     } else {

@@ -10,11 +10,11 @@ import Main from './Main'; // Our custom react components
 import Map from './map/map.jsx';
 import Schedule from './schedule/components/schedule.jsx'
 import CheckinContainer from './checkin/components/checkinContainer.jsx';
-// import DisplayAmbit from './displayAmbit/displayAmbit.jsx';
+// import DisplayBoop from './displayBoop/displayBoop.jsx';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import ambitDisplay from './displays/displayAmbit.jsx';
+import Display from './displays/displayBoop.jsx';
 import profileDisplay from './displays/displayProfile.jsx';
 
 // Needed for onTouchTap
@@ -36,9 +36,8 @@ class App extends React.Component {
             <Route path='/' component={CheckinContainer}/>
             <Route path='/schedule' component={Schedule}/>
             <Route path='/map' component={Map}/>
-            <Route path='/displayAmbit' component={ambitDisplay}/>
             <Route path='/displayProfile' component={profileDisplay}/>
-            <Route path='/display/:ambitNum' component={Display}/>
+            <Route path='/display/:boopNum' component={Display}/>
           </Route>
         </Router>
       </Provider> 

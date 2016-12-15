@@ -1,13 +1,13 @@
 var express = require('express');
 var userCtrl = require('../controllers/userController');
-var ambitHelper = require('../ambitData/ambitHelper.js');
+var boopHelper = require('../boopData/boopHelper.js');
 var app = express();
-var ambitRouter = require('express').Router();
+var boopRouter = require('express').Router();
 
-ambitRouter.get('/', ambitHelper.getAmbits);
-ambitRouter.post('/', ambitHelper.addAmbit);
-ambitRouter.delete('/', ambitHelper.deleteAllAmbits);
+boopRouter.get('/', boopHelper.getBoops);
+boopRouter.post('/', boopHelper.addBoop);
+boopRouter.delete('/', boopHelper.deleteAllBoops);
 
-ambitRouter.post('/:id', ambitHelper.saveCheckIn);
+boopRouter.post('/:id', boopHelper.saveCheckIn);
 
-module.exports = ambitRouter;
+module.exports = boopRouter;

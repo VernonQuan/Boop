@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import {List, ListItem} from 'material-ui/List';
 import * as Utils from '../utils/utils.js';
 
-class displayAmbit extends React.Component {
+class displayBoop extends React.Component {
   constructor(props) {
     super(props);
     this.state  = {
       today: new Date(),
 
       //hardcoded data for mock-up purposes
-      ambit: {weekdays: [true,true,false,true,false,true,true]}, //mon, wed, fri, sat, sun
+      boop: {weekdays: [true,true,false,true,false,true,true]}, //mon, wed, fri, sat, sun
       log: {"Sun Dec 11 2016": true, "Tue Dec 13 2016": true}
     }
   }
@@ -24,9 +24,9 @@ class displayAmbit extends React.Component {
   }
 
   render() {
-    console.log(this.props.params.ambitNum);
-    // test ambit populated from redux
-    var testAmbit = this.props.markers[this.props.params.ambitNum];
+    console.log(this.props.params.boopNum);
+    // test boop populated from redux
+    var testBoop = this.props.markers[this.props.params.boopNum];
     var startDate = new Date(this.state.today.toDateString());
     // sets startDate back 3 days
     startDate.setDate(startDate.getDate() - 3);
@@ -40,8 +40,8 @@ class displayAmbit extends React.Component {
 
       itemInfo.date = itemDate;
 
-      //if this list item's day of the week doesn't match ambit.weekdays
-      if(testAmbit.weekdays[itemDate.getDay()] === false){
+      //if this list item's day of the week doesn't match boop.weekdays
+      if(testBoop.weekdays[itemDate.getDay()] === false){
         itemInfo.status = 'Free';
       }
       else{
@@ -79,6 +79,6 @@ const mapStateToProps = (state) => ({
   markers : state.markers
 });
 
-displayAmbit = connect(mapStateToProps)(displayAmbit);
+displayBoop = connect(mapStateToProps)(displayBoop);
 
-export default displayAmbit;
+export default displayBoop;
