@@ -23,7 +23,6 @@ export const login = (user) =>
 export const signup = (user) => 
   axios.post('/register',user)
   .then(function(res) {
-    console.log('on signup:', res);
     setToken(res);
     return res;
   });
