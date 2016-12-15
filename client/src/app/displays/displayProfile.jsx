@@ -6,7 +6,7 @@ import {List, ListItem} from 'material-ui/List';
 import * as Utils from '../utils/utils.js';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
-export default class displayProfile extends React.Component {
+class displayProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,9 +27,9 @@ export default class displayProfile extends React.Component {
     <TableBody>
       <TableRow>
         <TableRowColumn>Elite</TableRowColumn>
-        <TableRowColumn>Blake Fleck</TableRowColumn>
-        <TableRowColumn>BasketBall</TableRowColumn>
-        <TableRowColumn>Houston</TableRowColumn>
+        <TableRowColumn>{this.props.user.username}</TableRowColumn>
+        <TableRowColumn>{this.props.user.favoriteActivity}</TableRowColumn>
+        <TableRowColumn>{this.props.user.origin}</TableRowColumn>
       </TableRow>
     </TableBody>
   </Table>)
@@ -37,10 +37,10 @@ export default class displayProfile extends React.Component {
 }
 
 
-// const mapStateToProps = (state) => ({
-//   username: state.users.username,
-// })
+ const mapStateToProps = (state) => ({
+   user: state.users.user
+ })
 
-// Profile = connect(mapStateToProps)(Profile);
+ displayProfile = connect(mapStateToProps)(displayProfile);
 
-// export {Profile}
+export default displayProfile
