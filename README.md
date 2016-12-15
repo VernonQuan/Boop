@@ -1,4 +1,4 @@
-# Boopually (formerly Boops)
+# Boop! (formerly Boops)
 Mobile-first web application for habit tracking and location-based accountability
 
 > Bet on Tomrrow, Today!

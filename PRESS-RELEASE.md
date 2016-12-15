@@ -17,28 +17,28 @@ Once the project moves into development, the press release can be used as a touc
  -->
 
 ## Heading ##
-  > Boopually --- Commit to Success Today
+  > Boop! --- Commit to Success Today
 
 ## Sub-Heading ##
-  > Get your life on track with Boopually, the habit-tracking app that holds you accountable to the most important person: you!
+  > Get your life on track with Boop!, the habit-tracking app that holds you accountable to the most important person: you!
 
 ## Summary ##
-  > Boopually lets you set up a schedule for yourself, by yourself. Choose a location and a day you plan to go there. Maybe you plan on going to the gym every Monday and Friday, or studying at the library every Sunday. Boopually will track your progress for you, but only if you check-in from that location --- if you try to check-in from the ice-cream store down the road, Boopually will know.
+  > Boop! lets you set up a schedule for yourself, by yourself. Choose a location and a day you plan to go there. Maybe you plan on going to the gym every Monday and Friday, or studying at the library every Sunday. Boop! will track your progress for you, but only if you check-in from that location --- if you try to check-in from the ice-cream store down the road, Boop! will know.
 
 ## Problem ##
   > It's easy to make a plan to go to the gym, but it's hard to stay on track every day.
 
 ## Solution ##
-  > With online commitment tracking that checks your current location with where you should be, Boopually puts YOU in charge of you.
+  > With online commitment tracking that checks your current location with where you should be, Boop! puts YOU in charge of you.
 
 ## Quote from You ##
-  > "We didn't just create this app for the marketplace, we created it for ourselves. Everyone can benefit from the geolocation-enabled accountability of Boopually"
+  > "We didn't just create this app for the marketplace, we created it for ourselves. Everyone can benefit from the geolocation-enabled accountability of Boop!"
 
 ## How to Get Started ##
-  > All you have to do is choose a location, choose the days you want to go, and you're set: Boopually will track your commitment and remember if you fail to show up.
+  > All you have to do is choose a location, choose the days you want to go, and you're set: Boop! will track your commitment and remember if you fail to show up.
 
 ## Customer Quote ##
-  > "I used to be overworked, underpaid, and overweight. But ****Boopually**** I realized the only way to change my life was to commit to doing something different. Thanks, Boopually"
+  > "I used to be overworked, underpaid, and overweight. But ****Boop!**** I realized the only way to change my life was to commit to doing something different. Thanks, Boop!"
 
 ## Closing and Call to Action ##
-  > 80% of success is showing up. Show up today with Boopually.
+  > 80% of success is showing up. Show up today with Boop!.
