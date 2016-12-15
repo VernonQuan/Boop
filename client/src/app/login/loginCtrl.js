@@ -22,7 +22,11 @@ export const login = (user) =>
 
 export const signup = (user) => 
   axios.post('/register',user)
-  .then(res => setToken(res));
+  .then(function(res) {
+    console.log('on signup:', res);
+    setToken(res);
+    return res;
+  });
 
 export const logout = (user) => 
   window.localStorage.removeItem(tokenKey);
