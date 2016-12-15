@@ -3,6 +3,7 @@ import {render} from 'react-dom'
 import { connect } from 'react-redux';
 import loadGoogleMapsAPI from 'load-google-maps-api';
 import RaisedButton from 'material-ui/RaisedButton';
+import Snackbar from 'material-ui/Snackbar';
 import { Link } from 'react-router';
 import * as Utils from '../utils/utils.js';
 import InfoWindow from './infoWindow.jsx';
@@ -35,6 +36,16 @@ class Map extends Component {
     this.mapInstance = {};
     this.googleMaps = {};
     this.centerMarker = {};
+
+    this.socket = io();
+
+    this.state = {
+      feedback: {
+        open: false,
+        autoHideDuration: 3000,
+        message: '',
+      }
+    }
   }
   componentDidMount() {
     // This is public; restricted by IP
@@ -43,6 +54,12 @@ class Map extends Component {
       v: '3.25'
     }).then((googleMaps) => {
       this.initMap(googleMaps); // sets instance vars atm
+    });
+    // listen for state changes on socket
+    var context = this;
+    this.socket.on('join', function(boop, user) {
+      console.log(user, 'joined', boop);
+      context.setState({feedback: {open: true, autoHideDuration: 3000, message: user + ' joined ' + boop }});
     });
   }
 
@@ -138,6 +155,12 @@ class Map extends Component {
         // containerElement={<Link to='/schedule'/>}
         fullWidth={false}
         ></RaisedButton>
+
+        <Snackbar
+          open={this.state.feedback.open}
+          message={this.state.feedback.message}
+          autoHideDuration={this.state.feedback.autoHideDuration}/>
+
       </div>
     )
   }
