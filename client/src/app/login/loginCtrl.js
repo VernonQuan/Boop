@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const tokenKey = 'auth.ambitually';
+const tokenKey = 'auth.boopually';
 
 // Todo: refactor for correct catch handling
 

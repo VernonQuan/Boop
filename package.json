@@ -1,5 +1,5 @@
 {
-  "name": "ambits",
+  "name": "boops",
   "version": "1.0.0",
   "description": "Mobile-first web application for habit tracking and location-based accountability",
   "main": "server/server.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CellularAnathema/ambits.git"
+    "url": "git+https://github.com/CellularAnathema/boops.git"
   },
   "keywords": [],
   "author": "",
@@ -41,9 +41,9 @@
     "webpack": "^1.14.0"
   },
   "bugs": {
-    "url": "https://github.com/CellularAnathema/ambits/issues"
+    "url": "https://github.com/CellularAnathema/boops/issues"
   },
-  "homepage": "https://github.com/CellularAnathema/ambits#readme",
+  "homepage": "https://github.com/CellularAnathema/boops#readme",
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-core": "^6.17.0",

@@ -31,7 +31,7 @@ const linkStyle = {
   'text-decoration':'none'
 };
 
-class Ambit extends React.Component {
+class Boop extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,24 +42,24 @@ class Ambit extends React.Component {
     return (
       <Card style={cardStyle}>
         <CardHeader
-          title = {this.props.ambit.name}
+          title = {this.props.boop.name}
           avatar = "http://www.19130fitness.com/wp-content/uploads/2015/07/crossfit-barbell.png"
-          subtitle = {this.props.ambit.frequency}
+          subtitle = {this.props.boop.frequency}
         />
         <CardActions>
           <FlatButton
             label= {
-              this.props.ambit.checkedIn ? "Checked In":"Check In!"
+              this.props.boop.checkedIn ? "Checked In":"Check In!"
             }
             onTouchTap={() => { 
-              this.props.handleCheckinAmbit(this.props.ambit); 
+              this.props.handleCheckinBoop(this.props.boop); 
               } 
             }
-            disabled = {this.props.ambit.checkedIn}
-            style={this.props.ambit.checkedIn ? checkedStyle : notCheckedStyle}
+            disabled = {this.props.boop.checkedIn}
+            style={this.props.boop.checkedIn ? checkedStyle : notCheckedStyle}
           />
           <FlatButton
-            label={<Link to={'/display/' + this.props.index} style={linkStyle}>Stats</Link>}//send to the stats page of the ambit.
+            label={<Link to={'/display/' + this.props.index} style={linkStyle}>Stats</Link>}//send to the stats page of the boop.
             style={statsStyle}
           />
         </CardActions> 
@@ -69,12 +69,12 @@ class Ambit extends React.Component {
 };
 
 
-Ambit.propTypes = {
-  ambit: React.PropTypes.object.isRequired,
-  handleCheckinAmbit: React.PropTypes.func.isRequired
+Boop.propTypes = {
+  boop: React.PropTypes.object.isRequired,
+  handleCheckinBoop: React.PropTypes.func.isRequired
 };
 
-export default Ambit;
+export default Boop;
 
 
 

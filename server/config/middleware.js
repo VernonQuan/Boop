@@ -1,12 +1,12 @@
 var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-var ambitHelper = require('../ambitData/ambitHelper.js');
-var ambitRouter = require('../routers/router.js');
+var boopHelper = require('../boopData/boopHelper.js');
+var boopRouter = require('../routers/router.js');
 var path = require('path');
 var app = express();
 
-var Ambit = require('../ambitData/ambitSchema');
+var Boop = require('../boopData/boopSchema');
 var User = require('../users/userModel');
 
 var userCtrl = require('../controllers/userController');

@@ -13,7 +13,7 @@ class CommitButton extends React.Component {
   };
 
   onClick = () => {
-    this.props.onScheduleAmbit();
+    this.props.onScheduleBoop();
     this.handleTouchTap();
   }
 
@@ -36,11 +36,11 @@ class CommitButton extends React.Component {
         label="SCHEDULE"
         style={style}
         onTouchTap={this.onClick}
-       // create ambit using date, name etc from current state
+       // create boop using date, name etc from current state
         />
         <Snackbar
           open={this.state.open}
-          message='Ambit added'
+          message='Boop added'
           autoHideDuration={4000}
           onRequestClose={this.props.handleRequestClose}
         />

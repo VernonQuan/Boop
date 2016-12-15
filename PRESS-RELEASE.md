@@ -17,28 +17,28 @@ Once the project moves into development, the press release can be used as a touc
  -->
 
 ## Heading ##
-  > Ambitually --- Commit to Success Today
+  > Boopually --- Commit to Success Today
 
 ## Sub-Heading ##
-  > Get your life on track with Ambitually, the habit-tracking app that holds you accountable to the most important person: you!
+  > Get your life on track with Boopually, the habit-tracking app that holds you accountable to the most important person: you!
 
 ## Summary ##
-  > Ambitually lets you set up a schedule for yourself, by yourself. Choose a location and a day you plan to go there. Maybe you plan on going to the gym every Monday and Friday, or studying at the library every Sunday. Ambitually will track your progress for you, but only if you check-in from that location --- if you try to check-in from the ice-cream store down the road, Ambitually will know.
+  > Boopually lets you set up a schedule for yourself, by yourself. Choose a location and a day you plan to go there. Maybe you plan on going to the gym every Monday and Friday, or studying at the library every Sunday. Boopually will track your progress for you, but only if you check-in from that location --- if you try to check-in from the ice-cream store down the road, Boopually will know.
 
 ## Problem ##
   > It's easy to make a plan to go to the gym, but it's hard to stay on track every day.
 
 ## Solution ##
-  > With online commitment tracking that checks your current location with where you should be, Ambitually puts YOU in charge of you.
+  > With online commitment tracking that checks your current location with where you should be, Boopually puts YOU in charge of you.
 
 ## Quote from You ##
-  > "We didn't just create this app for the marketplace, we created it for ourselves. Everyone can benefit from the geolocation-enabled accountability of Ambitually"
+  > "We didn't just create this app for the marketplace, we created it for ourselves. Everyone can benefit from the geolocation-enabled accountability of Boopually"
 
 ## How to Get Started ##
-  > All you have to do is choose a location, choose the days you want to go, and you're set: Ambitually will track your commitment and remember if you fail to show up.
+  > All you have to do is choose a location, choose the days you want to go, and you're set: Boopually will track your commitment and remember if you fail to show up.
 
 ## Customer Quote ##
-  > "I used to be overworked, underpaid, and overweight. But ****Ambitually**** I realized the only way to change my life was to commit to doing something different. Thanks, Ambitually"
+  > "I used to be overworked, underpaid, and overweight. But ****Boopually**** I realized the only way to change my life was to commit to doing something different. Thanks, Boopually"
 
 ## Closing and Call to Action ##
-  > 80% of success is showing up. Show up today with Ambitually.
+  > 80% of success is showing up. Show up today with Boopually.
