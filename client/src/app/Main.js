@@ -49,7 +49,7 @@ class Main extends Component {
       isLoggedIn: false
     });
   }
-
+  
   handleDrawerToggle = () => this.setState({open: !this.state.open});
   handleClose = () => this.setState({open: false});
 
