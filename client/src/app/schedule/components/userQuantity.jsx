@@ -9,38 +9,38 @@ const style = {
   marginRight: 20,
 };
 
-const style2 = {
-  margin: 12,
-};
-
 class UserAmount extends React.Component {
   constructor (props) {
     super(props);
 
     this.state = {value: 1};
-  };
-
-  onClick = () => {
-    this.increment();
   }
 
-  increment = () => {
-    this.state.value++;
+  increment() {
+    console.log('added')
+    this.setState ({
+      value: this.state.value++
+    });
   }
 
-  decrement = () => {
-    this.state.value--;
+  decrement() {
+    console.log('minus')
+    this.setState ({
+      value: this.state.value--
+    });
   }
 
   render() {
     return (
       <div>
-        <TextField hintText='Number of Participants' value={this.state.value}/>
-        <FloatingActionButton style={style} mini={true}>
-          <RemoveCircle />
+        <TextField value={this.state.value}/>
+        <FloatingActionButton 
+          style={style} mini={true}>
+          <RemoveCircle onClick={() => this.decrement()}/>
         </FloatingActionButton>
-        <FloatingActionButton style={style} mini={true}>
-          <ContentAdd />
+        <FloatingActionButton 
+          style={style} mini={true}>
+          <ContentAdd onClick={() => this.increment()}/>
         </FloatingActionButton>
       </div>
     );
