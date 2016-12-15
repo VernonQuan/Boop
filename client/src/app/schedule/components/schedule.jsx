@@ -75,7 +75,6 @@ class ScheduleContainer extends React.Component {
   onScheduleBoop() {
     var context = this;
     var boopState = this.state;
-    console.log('boopstate is', boopState);
 
     // Sends new boop to database and stores the boop in redux storage
     Utils.postBoop(boopState, function() {
@@ -156,7 +155,6 @@ onSelectDaysInputSaturday(event, checked) {
 
 
   render() {
-    console.log(this.state.weekdays);
     return (
       <div>
         <div>
