@@ -71,8 +71,7 @@ class Main extends Component {
   render() {
     const logOutButton = this.state.isLoggedIn ?
       (<FlatButton label="Logout"
-        onTouchTap={this.handleLogout.bind(this)}
-       />
+        onTouchTap={this.handleLogout.bind(this)}/>
       ) :
       null;
     const LoginModal = !this.state.isLoggedIn ?
@@ -89,11 +88,11 @@ class Main extends Component {
             docked={false}
             open={this.state.open}
             onRequestChange={(open) => this.setState({open})}>
-            <MenuItem>
-              <Link to="/" onClick={this.handleDrawerToggle}>Main Page</Link>
+            <MenuItem primaryText='Main Page'>
+              <Link to="/" onClick={this.handleDrawerToggle}></Link>
             </MenuItem>
-            <MenuItem>
-              <Link to="/displayProfile" onClick={this.handleDrawerToggle}>Profile</Link>
+            <MenuItem primaryText='Profile'>
+              <Link to="/displayProfile" onClick={this.handleDrawerToggle}></Link>
             </MenuItem>
           </Drawer>
           {LoginModal}
