@@ -30,18 +30,15 @@ class Login extends Component {
     };
     loginCtrl.login(returningUser)
     .then(function(res) {
-      context.setState({
-        loginIsOpen: false
-      })
-      context.props.main.setState({
-        isLoggedIn: true
-      });
+      context.setState({loginIsOpen: false});
+      context.props.main.setState({isLoggedIn: true});
       // plugs in email and password in an object into dispatch
       context.props.dispatch(logUser(res.data.userData));
     })
   };
 
   handleSignUp = () => {
+    var context = this;
     var newUser = {
       email: this.state.email,
       username: this.state.username,
@@ -51,13 +48,9 @@ class Login extends Component {
     };
     loginCtrl.signup(newUser)
     .then(res => {
-      this.setState({
-        loginIsOpen: false
-      });
-      this.props.main.setState({
-        isLoggedIn: true
-      });
-
+      this.setState({loginIsOpen: false});
+      this.props.main.setState({isLoggedIn: true});
+      context.props.dispatch(logUser(res.data.userData));
     })
     .catch(err => {
       const msg = err.response.data.message;
