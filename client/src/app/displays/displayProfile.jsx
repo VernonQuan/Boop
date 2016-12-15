@@ -23,7 +23,7 @@ class displayProfile extends React.Component {
     var list = response.data;
     list = list.sort(function(a, b){
       return a.rank > b.rank;
-    });
+    }).slice(0,10);
     context.setState({
 
       leaderboardList : list
@@ -54,7 +54,7 @@ class displayProfile extends React.Component {
     </TableBody>
   </Table>
   LeaderBoard:
-<Table>
+<Table >
     <TableHeader>
       <TableRow>
         <TableHeaderColumn>Rank</TableHeaderColumn>
