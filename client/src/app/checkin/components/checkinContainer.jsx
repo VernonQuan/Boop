@@ -66,7 +66,6 @@ class CheckinContainer extends React.Component {
       if(error) {
         //send user feedback: no connection
       } else {
-        console.log(data);
         // Perpetuates db boops to redux storage and in checkinContainer state
         this.setState({boops: data});
         context.props.dispatch(addMarker(data));
@@ -98,7 +97,6 @@ class CheckinContainer extends React.Component {
   handleShowStats(){}
 
   render() {
-    console.log(this.props.markers);
     if(!this.state.loading) {
       return (
         <MuiThemeProvider muiTheme={muiTheme}>
