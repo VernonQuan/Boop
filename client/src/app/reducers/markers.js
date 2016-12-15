@@ -4,13 +4,13 @@ const markers = (state = {}, action) => {
       if (Array.isArray(action.newMarker)) {
         var allMarkers = {};
         action.newMarker.map((marker) => (
-          allMarkers[marker._id] = marker
+          allMarkers[marker.refId] = marker
         ));
         return allMarkers;
       } else {
         return {
           ...state,
-          [action.newMarker._id]: action.newMarker,
+          [action.newMarker.refId]: action.newMarker,
         };
       }
     default: 
