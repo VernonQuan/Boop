@@ -17,17 +17,17 @@ class UserAmount extends React.Component {
   }
 
   increment() {
-    console.log('added')
     this.setState ({
-      value: this.state.value++
+      value: ++this.state.value
     });
   }
 
   decrement() {
-    console.log('minus')
-    this.setState ({
-      value: this.state.value--
-    });
+    if (this.state.value > 1) {
+      this.setState ({
+        value: --this.state.value
+      });
+    }
   }
 
   render() {
@@ -35,12 +35,12 @@ class UserAmount extends React.Component {
       <div>
         <TextField value={this.state.value}/>
         <FloatingActionButton 
-          style={style} mini={true}>
-          <RemoveCircle onClick={() => this.decrement()}/>
+          style={style} mini={true} onClick={() => this.decrement()}>
+          <RemoveCircle />
         </FloatingActionButton>
         <FloatingActionButton 
-          style={style} mini={true}>
-          <ContentAdd onClick={() => this.increment()}/>
+          style={style} mini={true} onClick={() => this.increment()}>
+          <ContentAdd/>
         </FloatingActionButton>
       </div>
     );
