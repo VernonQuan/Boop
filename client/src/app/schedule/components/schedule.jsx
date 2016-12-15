@@ -75,15 +75,11 @@ class ScheduleContainer extends React.Component {
   onScheduleBoop() {
     var context = this;
     var boopState = this.state;
-    console.log(boopState);
 
     // Sends new boop to database and stores the boop in redux storage
     Utils.postBoop(boopState, function() {
       console.log('posted!');
-      context.props.dispatch(addMarker({
-        name: boopState.name,
-        coords: boopState.coords,
-      }));
+      context.props.dispatch(addMarker(boopState));
     });
   }
 
