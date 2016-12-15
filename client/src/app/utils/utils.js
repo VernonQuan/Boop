@@ -88,7 +88,7 @@ export const postBoop = function (boop, callback){
     method:'post',
     url:'/boops',
     contentType: 'application/json',
-    data: {boop: boop}
+    data: boop,
     }).then(function(response){
       callback(response, null);
     }).catch(function(error) {
