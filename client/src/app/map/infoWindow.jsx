@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Checkbox from 'material-ui/Checkbox';
@@ -43,8 +44,19 @@ const muiTheme = getMuiTheme({
 class InfoWindow extends React.Component {
   constructor(props) {
     super(props);
+    this.socket = io();
   }
 
+  componentDidMount() {
+    // listen for state changes on socket
+    this.socket.on('join', function(boop, user) {
+      console.log(user, 'joined', boop);
+    });
+  }
+  
+  join() {
+    this.socket.emit('join', this.props.boop.name, this.props.user.username);
+  }
 
   render() {
   return (
@@ -57,7 +69,8 @@ class InfoWindow extends React.Component {
         <CardActions>
           <FlatButton
             label= 'Join'
-            style= {notCheckedStyle}/>
+            style= {notCheckedStyle}
+            onTouchTap={() => this.join()}/>
         </CardActions> 
       </Card>
       </MuiThemeProvider>

@@ -37,6 +37,7 @@ class Main extends Component {
       isLoggedIn: !!loginCtrl.getJwt(),
       open: false
     };
+    //var socket = io();
   }
 
   handleLogout() {

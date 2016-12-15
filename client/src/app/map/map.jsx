@@ -109,9 +109,8 @@ class Map extends Component {
       content: marker.name
     });
     newMarker.addListener('click', function() {
-      //infoWindow.open(context.mapInstance, newMarker);
       var div = document.createElement('div');
-      render( <InfoWindow boop={marker}/>, div );
+      render( <InfoWindow user={context.props.user} boop={marker}/>, div );
       infoWindow.setContent( div );
       infoWindow.open(context.mapInstance, newMarker);
     });
@@ -147,6 +146,7 @@ class Map extends Component {
 export { Coords }; //there is single-entry point to schedule and it is through maps.
 
 const mapStateToProps = (state) => ({
+  user: state.users.user,
   markers : state.markers
 });
 
