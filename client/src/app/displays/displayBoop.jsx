@@ -2,6 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {List, ListItem} from 'material-ui/List';
 import * as Utils from '../utils/utils.js';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+
+const style = {
+  marginRight: 20,
+};
 
 class displayBoop extends React.Component {
   constructor(props) {

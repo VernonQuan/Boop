@@ -88,14 +88,14 @@ class Login extends Component {
       (<TextField
         onChange={this.handleChange.bind(this,'placeOfOrigin')}
         fullWidth={true}
-        hintText='Where you from?' />
+        hintText='What city are you from?' />
         ) :
       null;
     const favoriteActivity = signUp ?
       (<TextField
         onChange={this.handleChange.bind(this,'favoriteActivity')}
         fullWidth={true}
-        hintText='favorite activity' />
+        hintText='Name an activity' />
         ) :
       null;
     const signUpField = signUp ?

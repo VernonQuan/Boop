@@ -8,6 +8,7 @@ import SelectDays from './selectDays.jsx';
 import BoopNameInput from './boopNameInput.jsx';
 import SelectTime from './selectTime.jsx';
 import SelectFrequency from './selectFrequency.jsx';
+import UserAmount from './userQuantity.jsx';
 import Divider from 'material-ui/Divider';
 import * as Utils from '../../utils/utils.js';
 import {Coords} from '../../map/map.jsx';
@@ -177,6 +178,9 @@ onSelectDaysInputSaturday(event, checked) {
         <SelectDays
             onSelectDays={this.onSelectDays}
             weekdays={this.state.weekdays}/>
+        </div>
+        <div>
+          <UserAmount/>
         </div>
         <div>
           <CommitButton
