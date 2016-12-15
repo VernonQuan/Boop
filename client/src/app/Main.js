@@ -15,6 +15,7 @@ import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField';
 import Login from './login/login.jsx';
 import * as loginCtrl from './login/loginCtrl';
+import { Link } from 'react-router'
 
 const styles = {
   container: {
@@ -38,6 +39,9 @@ class Main extends Component {
     };
   }
 
+  onProfileClick(){
+    console.log('clicked');
+  }
 
   handleLogout() {
     loginCtrl.logout();
@@ -72,7 +76,9 @@ class Main extends Component {
             open={this.state.open}
             onRequestChange={(open) => this.setState({open})}
           >
-            <MenuItem>Profile</MenuItem>
+            <MenuItem> 
+              <Link to="/displayProfile">Profile</Link>
+            </MenuItem>
             <MenuItem>More Stuff</MenuItem>
           </Drawer>
           {LoginModal}
