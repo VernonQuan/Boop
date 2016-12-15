@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Login from '../../login/login.jsx';
+
+import {List, ListItem} from 'material-ui/List';
+import * as Utils from '../utils/utils.js';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
-class Profile extends React.Component {
-  constructor(props){
+export default class displayProfile extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
 
@@ -12,7 +15,7 @@ class Profile extends React.Component {
   };
 
   render(){
-     return(<Table>
+    return(<Table>
     <TableHeader>
       <TableRow>
         <TableHeaderColumn>Rank</TableHeaderColumn>
@@ -33,10 +36,11 @@ class Profile extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  username: state.users.username,
-})
 
-Profile = connect(mapStateToProps)(Profile);
+// const mapStateToProps = (state) => ({
+//   username: state.users.username,
+// })
 
-export {Profile}
+// Profile = connect(mapStateToProps)(Profile);
+
+// export {Profile}

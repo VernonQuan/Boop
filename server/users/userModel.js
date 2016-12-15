@@ -16,15 +16,14 @@ var userSchema = new mongoose.Schema({
     latitude: Number,
     longitude: Number
   },
-  rank: Number,
+  rank: {type: Number, default: 3},
   picture: String,
   origin: String,
-  interests: Array,
-  history: Array,
+  interests: [String],
+  history: [String],
   password: String,
   salt: String,
-  favoriteActivity: String,
-  PlaceOfOrigin: String
+  favoriteActivity: String
 });
 
 

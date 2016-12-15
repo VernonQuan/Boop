@@ -14,7 +14,8 @@ import CheckinContainer from './checkin/components/checkinContainer.jsx';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import Display from './displayAmbit/displayAmbit.jsx';
+import ambitDisplay from './displays/displayAmbit.jsx';
+import profileDisplay from './displays/displayProfile.jsx';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -35,7 +36,8 @@ class App extends React.Component {
             <Route path='/' component={CheckinContainer}/>
             <Route path='/schedule' component={Schedule}/>
             <Route path='/map' component={Map}/>
-            <Route path='/display' component={Display}/>
+            <Route path='/displayAmbit' component={ambitDisplay}/>
+            <Route path='/displayProfile' component={profileDisplay}/>
           </Route>
         </Router>
       </Provider> 
