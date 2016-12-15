@@ -67,7 +67,7 @@ class Main extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <AppBar 
-            title='Boopually'
+            title='Boop!'
             onLeftIconButtonTouchTap={this.handleDrawerToggle}
             iconElementRight={logOutButton}
           />
