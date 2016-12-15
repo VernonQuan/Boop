@@ -7,7 +7,7 @@ var createBoop = q.nbind(Boop.create, Boop);
 
 module.exports.addBoop = function (req, res, next) {
   //records a new boop from the user
-  var boop = req.body.boop;
+  var boop = req.body;
   boop.checkIns = [];
   boop.refId = Math.round(Math.random()*10000);
 
@@ -74,4 +74,16 @@ module.exports.deleteAllBoops = function(req, res, next) {
     next(error);
   })
 };
+
+module.exports.updateJoinedUsers = function(req, res, next) {
+  var refId = req.params.id;
+
+  Boop.findOneAndUpdate(refId, req.body, {new: true})
+  .then(function(data) {
+    res.send(data);
+  })
+  .catch(function(error) {
+    next(error);
+  })
+}
 

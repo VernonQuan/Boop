@@ -54,7 +54,6 @@ const SelectDays = (props) => (
     />
 
 
-
   </div>
 );
 
