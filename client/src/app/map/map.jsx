@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import {render} from 'react-dom'
 import { connect } from 'react-redux';
 import loadGoogleMapsAPI from 'load-google-maps-api';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router';
 import * as Utils from '../utils/utils.js';
+import InfoWindow from './infoWindow.jsx';
 
 const actionStyle = {
   color: 'white',
@@ -71,6 +73,7 @@ class Map extends Component {
         position: latlng,
         map: map,
         draggable: true,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
       });
 
       // Awful, impure pattern, fix:
@@ -106,6 +109,10 @@ class Map extends Component {
       content: marker.name
     });
     newMarker.addListener('click', function() {
+      //infoWindow.open(context.mapInstance, newMarker);
+      var div = document.createElement('div');
+      render( <InfoWindow boop={marker}/>, div );
+      infoWindow.setContent( div );
       infoWindow.open(context.mapInstance, newMarker);
     });
   }
