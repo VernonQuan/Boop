@@ -70,6 +70,7 @@ class Map extends Component {
       var marker = new googleMaps.Marker({
         position: latlng,
         map: map,
+        draggable: true,
       });
 
       // Awful, impure pattern, fix:
@@ -78,10 +79,10 @@ class Map extends Component {
       context.googleMaps = googleMaps;
 
       // UPDATE: Seems unnecessary...
-      googleMaps.event.addListener(context.mapInstance, 'drag', () => {
+/*      googleMaps.event.addListener(context.mapInstance, 'drag', () => {
         var centerLatLng = map.getCenter();
         context.centerMarker.setPosition(centerLatLng);
-      });
+      });*/
 
       // Retrieving from store to render events from db
       Object.keys(context.props.markers).map((key) => {
