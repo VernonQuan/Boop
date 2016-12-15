@@ -173,14 +173,14 @@ onSelectDaysInputSaturday(event, checked) {
         <SelectTime
             onSelectTime={this.onSelectTime}/>
         </div>
+        <div>
+          <UserAmount/>
+        </div>
         <Divider />
         <div>
         <SelectDays
             onSelectDays={this.onSelectDays}
             weekdays={this.state.weekdays}/>
-        </div>
-        <div>
-          <UserAmount/>
         </div>
         <div>
           <CommitButton

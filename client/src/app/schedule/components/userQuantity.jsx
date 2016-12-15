@@ -25,16 +25,20 @@ class UserAmount extends React.Component {
   }
 
   increment = () => {
-    
+    this.state.value++;
+  }
+
+  decrement = () => {
+    this.state.value--;
   }
 
   render() {
     return (
       <div>
+        <TextField hintText='Number of Participants' value={this.state.value}/>
         <FloatingActionButton style={style} mini={true}>
           <RemoveCircle />
         </FloatingActionButton>
-        <TextField hintText='Number of Participants'/>
         <FloatingActionButton style={style} mini={true}>
           <ContentAdd />
         </FloatingActionButton>
