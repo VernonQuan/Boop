@@ -59,7 +59,7 @@ class Map extends Component {
     var context = this;
     this.socket.on('join', function(boop, user) {
       console.log(user, 'joined', boop);
-      context.setState({feedback: {open: true, autoHideDuration: 3000, message: user + ' joined ' + boop }});
+      context.setState({feedback: {...context.state.feedback, open: true, message: user + ' joined ' + boop }});
     });
   }
 
@@ -81,13 +81,13 @@ class Map extends Component {
       // Creates map object for rendering 
       var map = new googleMaps.Map(document.getElementById('map'), {
         zoom: 17,
-        center: latlng,
+        center: hackReactor,
       });
 
       // Creates a marker at the current location
       // UPDATE: Maybe make it draggable?
       var marker = new googleMaps.Marker({
-        position: latlng,
+        position: hackReactor,
         map: map,
         draggable: true,
         icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
