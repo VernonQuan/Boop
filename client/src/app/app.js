@@ -38,6 +38,7 @@ class App extends React.Component {
             <Route path='/map' component={Map}/>
             <Route path='/displayAmbit' component={ambitDisplay}/>
             <Route path='/displayProfile' component={profileDisplay}/>
+            <Route path='/display/:ambitNum' component={Display}/>
           </Route>
         </Router>
       </Provider> 
