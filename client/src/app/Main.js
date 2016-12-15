@@ -69,7 +69,6 @@ class Main extends Component {
   handleClose = () => this.setState({open: false});
 
   render() {
-    console.log(this.state.feedback);
     const logOutButton = this.state.isLoggedIn ?
       (<FlatButton label="Logout"
         onTouchTap={this.handleLogout.bind(this)}
