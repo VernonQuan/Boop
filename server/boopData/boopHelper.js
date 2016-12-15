@@ -7,7 +7,8 @@ var createBoop = q.nbind(Boop.create, Boop);
 
 module.exports.addBoop = function (req, res, next) {
   //records a new boop from the user
-  var boop = req.body.boop;
+  console.log('req.body', req.body);
+  var boop = req.body;
   boop.checkIns = [];
   boop.refId = Math.round(Math.random()*10000);
 
