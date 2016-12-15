@@ -62,7 +62,7 @@ class Main extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <AppBar 
+          <AppBar
             title='Boop!'
             onLeftIconButtonTouchTap={this.handleDrawerToggle}
             iconElementRight={logOutButton}
@@ -73,9 +73,11 @@ class Main extends Component {
             onRequestChange={(open) => this.setState({open})}
           >
             <MenuItem>
+              <Link to="/" onClick={this.handleDrawerToggle}>Main Page</Link>
+            </MenuItem>
+            <MenuItem>
               <Link to="/displayProfile" onClick={this.handleDrawerToggle}>Profile</Link>
             </MenuItem>
-            <MenuItem>More Stuff</MenuItem>
           </Drawer>
           {LoginModal}
           {this.props.children}
