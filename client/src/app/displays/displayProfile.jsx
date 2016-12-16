@@ -5,11 +5,23 @@ import {Leaderboard} from './leaderboard.jsx';
 import axios from 'axios';
 import {List, ListItem} from 'material-ui/List';
 import * as Utils from '../utils/utils.js';
+import Avatar from 'material-ui/Avatar';
+import Chip from 'material-ui/Chip';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
 const h3Style = {
   textAlign: 'center'
 };
+const styles = {
+  chip: {
+    margin: 4,
+  },
+  wrapper: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+};
+
 class displayProfile extends React.Component {
   constructor(props) {
     super(props);
@@ -44,8 +56,8 @@ class displayProfile extends React.Component {
 
   render(){
 
-    return(<div><Table>
-    <TableHeader displaySelectAll= {false} adjustForCheckbox = {false}>
+    return(<div><Table style={{width: '85%'}}>
+    <TableHeader displaySelectAll= {false} adjustForCheckbox = {false} >
       <TableRow>
         <TableHeaderColumn>Rank</TableHeaderColumn>
         <TableHeaderColumn>Name</TableHeaderColumn>
@@ -53,13 +65,18 @@ class displayProfile extends React.Component {
     </TableHeader>
     <TableBody displayRowCheckbox = {false} >
       <TableRow>
-        <TableRowColumn>{this.props.user.rank}</TableRowColumn>
-        <TableRowColumn>{this.props.user.username}</TableRowColumn>
+        <TableRowColumn><Chip style={styles}>
+          <Avatar src="https://s3.amazonaws.com/uifaces/faces/twitter/rogie/48.jpg" />
+        {this.props.user.rank}</Chip></TableRowColumn>
+        <TableRowColumn><Chip style={styles}>
+          <Avatar src="https://s3.amazonaws.com/uifaces/faces/twitter/rogie/48.jpg" />
+        {this.props.user.username}</Chip>
+        </TableRowColumn>
       </TableRow>
     </TableBody>
   </Table>
   <h3 style={h3Style}>LeaderBoard</h3>
-<Table >
+  <Table style={{width: '85%'}}>
     <TableHeader displaySelectAll= {false} adjustForCheckbox = {false}>
       <TableRow>
         <TableHeaderColumn>Rank</TableHeaderColumn>
@@ -67,7 +84,7 @@ class displayProfile extends React.Component {
       </TableRow>
     </TableHeader>
     <TableBody displayRowCheckbox = {false}>
-    {this.state.leaderboardList.map((uniq) => <Leaderboard userz={uniq} />)}
+      {this.state.leaderboardList.map((uniq) => <Leaderboard userz={uniq} />)}
     </TableBody>
   </Table>
   </div>)
