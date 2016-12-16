@@ -67,7 +67,8 @@ class displayProfile extends React.Component {
       <TableRow>
         <TableRowColumn><Chip style={styles}>
           <Avatar src="https://s3.amazonaws.com/uifaces/faces/twitter/rogie/48.jpg" />
-        {this.props.user.rank}</Chip></TableRowColumn>
+        {this.props.user.rank}</Chip>
+        </TableRowColumn>
         <TableRowColumn><Chip style={styles}>
           <Avatar src="https://s3.amazonaws.com/uifaces/faces/twitter/rogie/48.jpg" />
         {this.props.user.username}</Chip>

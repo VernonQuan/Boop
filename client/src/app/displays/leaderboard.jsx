@@ -18,10 +18,12 @@ const Leaderboard = (props) => {
     <TableRow>
       <TableRowColumn><Chip style={styles}>
           <Avatar src="https://s3.amazonaws.com/uifaces/faces/twitter/rogie/48.jpg" />
-        {props.userz.rank}</Chip></TableRowColumn>
+        {props.userz.rank}</Chip>
+      </TableRowColumn>
       <TableRowColumn><Chip style={styles}>
           <Avatar src="https://s3.amazonaws.com/uifaces/faces/twitter/rogie/48.jpg" />
-        {props.userz.username}</Chip></TableRowColumn>
+        {props.userz.username}</Chip>
+      </TableRowColumn>
     </TableRow>
   )
 };
