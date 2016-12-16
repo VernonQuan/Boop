@@ -103,7 +103,7 @@ export const getAllBoops = function(callback) {
     contentType: 'application/json',
   }).then(function(response) {
     //testing comment out 
-    response.data.push( {
+/*    response.data.push( {
         refId: 1234,
         name: 'Gym',
         coords: {
@@ -124,7 +124,7 @@ export const getAllBoops = function(callback) {
         weekdays:[true,true,true,true,true,true,true],
         startDate:'2016-12-12',
         checkIns:[]
-        });
+        });*/
     callback(decorateBoops(response.data));
   }).catch(function(error){
     throw error;

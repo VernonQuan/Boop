@@ -111,6 +111,7 @@ class Map extends Component {
     });
     newMarker.addListener('click', function() {
       var div = document.createElement('div');
+      div.className += 'infoWindow';
       render( <InfoWindow user={context.props.user} boop={marker}/>, div );
       infoWindow.setContent( div );
       infoWindow.open(context.mapInstance, newMarker);
@@ -122,10 +123,11 @@ class Map extends Component {
       latitude: this.centerMarker.getPosition().lat(), 
       longitude: this.centerMarker.getPosition().lng()
     }; 
-    console.log(Coords);
   }
 
   render() {
+    console.log(this.props.markers);
+    console.log(this.props.user);
     return (
       <div>
         <div id="map"> 

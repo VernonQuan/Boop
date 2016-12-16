@@ -59,6 +59,10 @@ class InfoWindow extends React.Component {
   }
 
   render() {
+    const Join = this.props.boop.limit > 1 ? <FlatButton
+      label= 'Join'
+      style= {notCheckedStyle}
+      onTouchTap={() => this.join()}/> : null;
   return (
     <MuiThemeProvider muiTheme={muiTheme}>
     <Card style={cardStyle}>
@@ -67,10 +71,7 @@ class InfoWindow extends React.Component {
           avatar = "http://www.19130fitness.com/wp-content/uploads/2015/07/crossfit-barbell.png"
           subtitle = {"Owner: Test Frequency: " + this.props.boop.frequency}/>
         <CardActions>
-          <FlatButton
-            label= 'Join'
-            style= {notCheckedStyle}
-            onTouchTap={() => this.join()}/>
+          { Join }
         </CardActions> 
       </Card>
       </MuiThemeProvider>
