@@ -4,6 +4,7 @@
  */
 import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+import { connect } from 'react-redux';
 import Dialog from 'material-ui/Dialog';
 import {deepOrange500} from 'material-ui/styles/colors';
 import FlatButton from 'material-ui/FlatButton';
@@ -13,6 +14,7 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField';
+import Snackbar from 'material-ui/Snackbar';
 import Login from './login/login.jsx';
 import * as loginCtrl from './login/loginCtrl';
 import { Link } from 'react-router'
@@ -33,10 +35,27 @@ const muiTheme = getMuiTheme({
 class Main extends Component {
   constructor(props, context) {
     super(props, context);
+
+    this.socket = io();
+
     this.state = {
       isLoggedIn: !!loginCtrl.getJwt(),
-      open: false
+      open: false,
+      feedback: {
+        open: false,
+        autoHideDuration: 2000,
+        message: '',
+      }
     };
+  }
+
+  componentDidMount() {
+    var context = this;
+    this.socket.on('join', function(boop, user) {
+      console.log(user, 'joined', boop);
+      context.setState({feedback: {...context.state.feedback, open: true, message: user + ' joined ' + boop }});
+      window.setTimeout(() => context.setState({feedback: {...context.state.feedback, open: false}}), 2000);
+    });
   }
 
   handleLogout() {
@@ -65,13 +84,11 @@ class Main extends Component {
           <AppBar
             title='Boop!'
             onLeftIconButtonTouchTap={this.handleDrawerToggle}
-            iconElementRight={logOutButton}
-          />
+            iconElementRight={logOutButton}/>
           <Drawer
             docked={false}
             open={this.state.open}
-            onRequestChange={(open) => this.setState({open})}
-          >
+            onRequestChange={(open) => this.setState({open})}>
             <MenuItem>
               <Link to="/" onClick={this.handleDrawerToggle}>Main Page</Link>
             </MenuItem>
@@ -81,6 +98,12 @@ class Main extends Component {
           </Drawer>
           {LoginModal}
           {this.props.children}
+
+          <Snackbar
+          open={this.state.feedback.open}
+          message={this.state.feedback.message}
+          autoHideDuration={this.state.feedback.autoHideDuration}/>
+
         </div>
       </MuiThemeProvider>
     );

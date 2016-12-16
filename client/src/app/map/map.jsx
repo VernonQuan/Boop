@@ -3,6 +3,7 @@ import {render} from 'react-dom'
 import { connect } from 'react-redux';
 import loadGoogleMapsAPI from 'load-google-maps-api';
 import RaisedButton from 'material-ui/RaisedButton';
+import Snackbar from 'material-ui/Snackbar';
 import { Link } from 'react-router';
 import * as Utils from '../utils/utils.js';
 import InfoWindow from './infoWindow.jsx';
@@ -109,9 +110,8 @@ class Map extends Component {
       content: marker.name
     });
     newMarker.addListener('click', function() {
-      //infoWindow.open(context.mapInstance, newMarker);
       var div = document.createElement('div');
-      render( <InfoWindow boop={marker}/>, div );
+      render( <InfoWindow user={context.props.user} boop={marker}/>, div );
       infoWindow.setContent( div );
       infoWindow.open(context.mapInstance, newMarker);
     });
@@ -139,6 +139,7 @@ class Map extends Component {
         // containerElement={<Link to='/schedule'/>}
         fullWidth={false}
         ></RaisedButton>
+
       </div>
     )
   }
@@ -147,6 +148,7 @@ class Map extends Component {
 export { Coords }; //there is single-entry point to schedule and it is through maps.
 
 const mapStateToProps = (state) => ({
+  user: state.users.user,
   markers : state.markers
 });
 
