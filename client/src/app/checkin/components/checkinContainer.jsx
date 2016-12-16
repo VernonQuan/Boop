@@ -115,8 +115,7 @@ class CheckinContainer extends React.Component {
             <Snackbar
             open={this.state.feedback.open}
             message={this.state.feedback.message}
-            autoHideDuration={this.state.feedback.autoHideDuration}
-            />
+            autoHideDuration={this.state.feedback.autoHideDuration}/>
           </div>
         </MuiThemeProvider>
       );

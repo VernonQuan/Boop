@@ -11,7 +11,7 @@ const BoopList = (props) => {
 }
 
 BoopList.propTypes = {
-  boops: React.PropTypes.array.isRequired,
+  boops: React.PropTypes.object.isRequired,
   handleCheckinBoop: React.PropTypes.func.isRequired
 };
 
