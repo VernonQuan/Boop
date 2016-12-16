@@ -35,6 +35,12 @@ class Login extends Component {
       // plugs in email and password in an object into dispatch
       context.props.dispatch(logUser(res.data.userData));
     })
+    .catch(err => {
+      const msg = err.response.data.message;
+      this.setState({
+        submitError: msg
+      });
+    })
   };
 
   handleSignUp = () => {
