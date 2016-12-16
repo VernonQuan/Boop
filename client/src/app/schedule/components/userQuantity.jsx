@@ -35,13 +35,18 @@ class UserAmount extends React.Component {
   render() {
     return (
       <div>
-        <TextField value={this.state.limit}/>
         <FloatingActionButton 
-          style={style} mini={true} onClick={() => this.decrement()}>
+          style={style} secondary={true} mini={true} onClick={() => this.decrement()}>
           <RemoveCircle />
         </FloatingActionButton>
         <FloatingActionButton 
-          style={style} mini={true} onClick={() => this.increment()}>
+          style={style}>
+          <div>
+            {this.state.limit}
+          </div>
+        </FloatingActionButton>
+        <FloatingActionButton 
+          style={style} secondary={true} mini={true} onClick={() => this.increment()}>
           <ContentAdd/>
         </FloatingActionButton>
       </div>

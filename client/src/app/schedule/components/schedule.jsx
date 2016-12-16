@@ -184,7 +184,9 @@ onSelectDaysInputSaturday(event, checked) {
         <div>
           <UserAmount onUserSelect={this.onUserSelect}/>
         </div>
+        <br/>
         <Divider />
+        <br/>
         <div>
         <SelectDays
             onSelectDays={this.onSelectDays}
