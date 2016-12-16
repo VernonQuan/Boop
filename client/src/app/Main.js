@@ -88,11 +88,11 @@ class Main extends Component {
             docked={false}
             open={this.state.open}
             onRequestChange={(open) => this.setState({open})}>
-            <MenuItem primaryText='Main Page'>
-              <Link to="/" onClick={this.handleDrawerToggle}></Link>
+            <MenuItem>
+              <Link to="/" onClick={this.handleDrawerToggle}>Main Page</Link>
             </MenuItem>
-            <MenuItem primaryText='Profile'>
-              <Link to="/displayProfile" onClick={this.handleDrawerToggle}></Link>
+            <MenuItem>
+              <Link to="/displayProfile" onClick={this.handleDrawerToggle}>Profile</Link>
             </MenuItem>
           </Drawer>
           {LoginModal}
