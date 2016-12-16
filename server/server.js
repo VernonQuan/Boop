@@ -15,6 +15,7 @@ var User = require('./users/userModel');
 
 var userCtrl = require('./controllers/userController');
 
+
 require('./config/passport');
 
 app.use('/boops', boopRouter);
@@ -22,6 +23,7 @@ app.use('/boops', boopRouter);
 app.post('/register', userCtrl.register);
 app.post('/login', userCtrl.login);
 app.get('/api/users', userCtrl.allUsers);
+app.put('/newRank', userCtrl.changeRank);
 
 // To use on Heroku, set the environment variable:
 // $ heroku set:config MONGOLAB_URL=mongodb://user:password@mongolabstuff

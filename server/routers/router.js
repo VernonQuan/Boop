@@ -7,7 +7,7 @@ var boopRouter = require('express').Router();
 boopRouter.get('/', boopHelper.getBoops);
 boopRouter.post('/', boopHelper.addBoop);
 boopRouter.delete('/', boopHelper.deleteAllBoops);
-boopRouter.put('/', boopHelper.updateJoinedUsers);
+boopRouter.put('/:refId', boopHelper.updateJoinedUsers);
 
 boopRouter.post('/:id', boopHelper.saveCheckIn);
 
