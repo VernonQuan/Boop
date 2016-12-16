@@ -13,7 +13,6 @@ import Divider from 'material-ui/Divider';
 import * as Utils from '../../utils/utils.js';
 import {Coords} from '../../map/map.jsx';
 
-
 class ScheduleContainer extends React.Component {
   constructor (props) {
     super(props);
