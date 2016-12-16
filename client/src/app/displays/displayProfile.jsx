@@ -40,13 +40,13 @@ class displayProfile extends React.Component {
   render(){
 
     return(<div><Table>
-    <TableHeader>
+    <TableHeader displaySelectAll= {false} adjustForCheckbox = {false}>
       <TableRow>
         <TableHeaderColumn>Rank</TableHeaderColumn>
         <TableHeaderColumn>Name</TableHeaderColumn>
       </TableRow>
     </TableHeader>
-    <TableBody>
+    <TableBody displayRowCheckbox = {false} >
       <TableRow>
         <TableRowColumn>{this.props.user.rank}</TableRowColumn>
         <TableRowColumn>{this.props.user.username}</TableRowColumn>
@@ -55,13 +55,13 @@ class displayProfile extends React.Component {
   </Table>
   LeaderBoard:
 <Table >
-    <TableHeader>
+    <TableHeader displaySelectAll= {false} adjustForCheckbox = {false}>
       <TableRow>
         <TableHeaderColumn>Rank</TableHeaderColumn>
         <TableHeaderColumn>Name</TableHeaderColumn>
       </TableRow>
     </TableHeader>
-    <TableBody>
+    <TableBody displayRowCheckbox = {false}>
     {this.state.leaderboardList.map((uniq) => <Leaderboard userz={uniq} />)}
     </TableBody>
   </Table>
