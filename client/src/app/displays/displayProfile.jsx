@@ -10,6 +10,7 @@ import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColu
 const h3Style = {
   textAlign: 'center'
 };
+
 class displayProfile extends React.Component {
   constructor(props) {
     super(props);
@@ -44,8 +45,8 @@ class displayProfile extends React.Component {
 
   render(){
 
-    return(<div><Table>
-    <TableHeader displaySelectAll= {false} adjustForCheckbox = {false}>
+    return(<div><Table style={{width: '85%'}}>
+    <TableHeader displaySelectAll= {false} adjustForCheckbox = {false} >
       <TableRow>
         <TableHeaderColumn>Rank</TableHeaderColumn>
         <TableHeaderColumn>Name</TableHeaderColumn>
@@ -59,7 +60,7 @@ class displayProfile extends React.Component {
     </TableBody>
   </Table>
   <h3 style={h3Style}>LeaderBoard</h3>
-<Table >
+  <Table style={{width: '85%'}}>
     <TableHeader displaySelectAll= {false} adjustForCheckbox = {false}>
       <TableRow>
         <TableHeaderColumn>Rank</TableHeaderColumn>
@@ -67,7 +68,7 @@ class displayProfile extends React.Component {
       </TableRow>
     </TableHeader>
     <TableBody displayRowCheckbox = {false}>
-    {this.state.leaderboardList.map((uniq) => <Leaderboard userz={uniq} />)}
+      {this.state.leaderboardList.map((uniq) => <Leaderboard userz={uniq} />)}
     </TableBody>
   </Table>
   </div>)
