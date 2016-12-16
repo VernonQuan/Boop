@@ -29,12 +29,14 @@ class ScheduleContainer extends React.Component {
       //[Su,M,T,w,Th,F,Sa]
       startDate: null,
       startTime:null,
-      checkIns:[]
+      checkIns:[],
+      limit: 1
     };
     
     this.onNameInput = this.onNameInput.bind(this);
     this.onStartDateSet = this.onStartDateSet.bind(this);
     this.onSelectTime = this.onSelectTime.bind(this);
+    this.onUserSelect = this.onUserSelect.bind(this);
     this.onScheduleBoop = this.onScheduleBoop.bind(this);
     // this.onFrequencyChange = this.onFrequencyChange.bind(this);
     // this.onDropDownSelect = this.onDropDownSelect.bind(this);
@@ -49,11 +51,16 @@ class ScheduleContainer extends React.Component {
     };
   }
 
-
   onNameInput(nameInput) {
-      this.setState({
-        name: nameInput.target.value
-      });
+    this.setState({
+      name: nameInput.target.value
+    });
+  }
+
+  onUserSelect(amountInput) {
+    this.setState({
+      limit: amountInput
+    })
   }
 
 // Need to reformat date object to not include current time before passing into database
@@ -76,6 +83,7 @@ class ScheduleContainer extends React.Component {
   onScheduleBoop() {
     var context = this;
     var boopState = this.state;
+    boopState.ownerId = this.props.user._id;
 
     // Sends new boop to database and stores the boop in redux storage
     Utils.postBoop(boopState, function() {
@@ -174,7 +182,7 @@ onSelectDaysInputSaturday(event, checked) {
             onSelectTime={this.onSelectTime}/>
         </div>
         <div>
-          <UserAmount/>
+          <UserAmount onUserSelect={this.onUserSelect}/>
         </div>
         <Divider />
         <div>
@@ -192,6 +200,11 @@ onSelectDaysInputSaturday(event, checked) {
   }
 }
 
-ScheduleContainer = connect()(ScheduleContainer);
+
+ const mapStateToProps = (state) => ({
+   user: state.users.user
+ })
+
+ScheduleContainer = connect(mapStateToProps)(ScheduleContainer);
 
 export default ScheduleContainer;

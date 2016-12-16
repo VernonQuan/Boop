@@ -13,27 +13,29 @@ class UserAmount extends React.Component {
   constructor (props) {
     super(props);
 
-    this.state = {value: 1};
+    this.state = {limit: 1};
   }
 
   increment() {
     this.setState ({
-      value: ++this.state.value
+      limit: ++this.state.limit
     });
+    this.props.onUserSelect(this.state.limit);
   }
 
   decrement() {
-    if (this.state.value > 1) {
+    if (this.state.limit > 1) {
       this.setState ({
-        value: --this.state.value
+        limit: --this.state.limit
       });
     }
+    this.props.onUserSelect(this.state.limit);
   }
 
   render() {
     return (
       <div>
-        <TextField value={this.state.value}/>
+        <TextField value={this.state.limit}/>
         <FloatingActionButton 
           style={style} mini={true} onClick={() => this.decrement()}>
           <RemoveCircle />
@@ -46,7 +48,5 @@ class UserAmount extends React.Component {
     );
   }
 }
-
-
 
 export default UserAmount;
