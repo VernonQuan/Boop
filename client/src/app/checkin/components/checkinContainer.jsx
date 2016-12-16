@@ -10,6 +10,7 @@ import CircularProgress from'material-ui/CircularProgress';
 import Snackbar from 'material-ui/Snackbar';
 import {Router, Route, Link} from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
+import * as checkinCtrl from '../checkinController.js';
 //import Controls from './controls.jsx';
 
 
@@ -74,11 +75,13 @@ class CheckinContainer extends React.Component {
   }
 
   handleCheckinBoop(boop) {
+    var context = this;
     this.setState({loading: true}); //loading...
     //validate checkin:
     Utils.checkinBoop(boop, () => {
       //if valid update the state
       this.state.boops.find(item => boop.name === item.name).checkedIn = true;
+        checkinCtrl.upRank(context.props.user);
       this.setState({
         loading:false,
         boops: this.state.boops,
@@ -129,8 +132,10 @@ class CheckinContainer extends React.Component {
   }
 };
 
+
 const mapStateToProps = (state) => ({
-  markers : state.markers
+  markers : state.markers,
+  user: state.users.user
 });
 
 CheckinContainer = connect(mapStateToProps)(CheckinContainer);

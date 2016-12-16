@@ -8,11 +8,11 @@ const setToken = (res) =>
   window.localStorage.setItem(tokenKey, res.data.token);
 
 // Previous code for login
-/*export const login = (user) => 
+/*export const login = (user) =>
   axios.post('/login', user)
   .then(res => setToken(res));*/
 
-export const login = (user) => 
+export const login = (user) =>
   axios.post('/login', user)
   .then(function(res) {
     console.log('result is', res);
@@ -20,15 +20,15 @@ export const login = (user) =>
     return res;
   });
 
-export const signup = (user) => 
+export const signup = (user) =>
   axios.post('/register',user)
   .then(function(res) {
     setToken(res);
     return res;
   });
 
-export const logout = (user) => 
+export const logout = (user) =>
   window.localStorage.removeItem(tokenKey);
 
-export const getJwt = () => 
+export const getJwt = () =>
   window.localStorage.getItem(tokenKey);
