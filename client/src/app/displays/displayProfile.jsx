@@ -101,6 +101,7 @@ class displayProfile extends React.Component {
     <TableBody displayRowCheckbox = {false} >
       <TableRow>
         <TableRowColumn><Chip style={styles}>
+
           <Avatar src={this.determinePicture(this.props.user.rank)} />
         {this.props.user.rank}</Chip></TableRowColumn>
         <TableRowColumn><Chip style={styles}>

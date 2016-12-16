@@ -13,7 +13,6 @@ const styles = {
   },
 };
 
-
 class Leaderboard extends React.Component {
   constructor(props) {
     super(props);
