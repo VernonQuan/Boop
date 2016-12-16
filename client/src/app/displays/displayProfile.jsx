@@ -74,8 +74,8 @@ class displayProfile extends React.Component {
     var list = response.data;
     list = list.sort(function(a, b){
       return a.rank > b.rank;
-    }).slice(0,10);
-    list = list.reverse();
+    });
+    list = list.reverse().slice(0,10);
     context.setState({
 
       leaderboardList : list
