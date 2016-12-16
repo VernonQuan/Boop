@@ -119,8 +119,8 @@ class Map extends Component {
 
   getCoordinates() {
     Coords = {
-      latitude: this.mapInstance.getCenter().lat(), 
-      longitude: this.mapInstance.getCenter().lng() 
+      latitude: this.centerMarker.getPosition().lat(), 
+      longitude: this.centerMarker.getPosition().lng()
     }; 
     console.log(Coords);
   }
