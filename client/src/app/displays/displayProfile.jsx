@@ -28,6 +28,7 @@ class displayProfile extends React.Component {
     list = list.sort(function(a, b){
       return a.rank > b.rank;
     }).slice(0,10);
+    list = list.reverse();
     context.setState({
 
       leaderboardList : list
