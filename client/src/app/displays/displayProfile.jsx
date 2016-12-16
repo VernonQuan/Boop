@@ -7,6 +7,9 @@ import {List, ListItem} from 'material-ui/List';
 import * as Utils from '../utils/utils.js';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
+const h3Style = {
+  textAlign: 'center'
+};
 class displayProfile extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +18,7 @@ class displayProfile extends React.Component {
 
     }
   };
+
   componentWillMount(){
     var context = this;
     axios.get('/api/users')
@@ -24,6 +28,7 @@ class displayProfile extends React.Component {
     list = list.sort(function(a, b){
       return a.rank > b.rank;
     }).slice(0,10);
+    list = list.reverse();
     context.setState({
 
       leaderboardList : list
@@ -53,7 +58,7 @@ class displayProfile extends React.Component {
       </TableRow>
     </TableBody>
   </Table>
-  LeaderBoard:
+  <h3 style={h3Style}>LeaderBoard</h3>
 <Table >
     <TableHeader displaySelectAll= {false} adjustForCheckbox = {false}>
       <TableRow>
