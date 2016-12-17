@@ -66,6 +66,8 @@ class Main extends Component {
   handleClose = () => this.setState({open: false});
 
   render() {
+    // sets all variables for the user login fields
+    // or signup fields based on current state
     const logOutButton = this.state.isLoggedIn ?
       (<FlatButton label="Logout"
         onTouchTap={this.handleLogout.bind(this)}/>
