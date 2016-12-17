@@ -143,9 +143,11 @@ class Map extends Component {
 
   render() {
     console.log('maps is rendering');
-    Utils.updateJoinedUsers(this.state.boopId, this.props.markers[this.state.boopId], function() {
-      console.log('database updated');
-    });
+    if (this.state.boopId !== 0) {
+      Utils.updateJoinedUsers(this.state.boopId, this.props.markers[this.state.boopId], function() {
+        console.log('database updated');
+      });
+    }
     return (
       <div>
         <div id="map"> 
