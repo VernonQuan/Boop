@@ -33,34 +33,25 @@ class displayProfile extends React.Component {
 
   determinePicture(rank) {
     var url = ''
-    if (rank === 1) {
+    if (rank < 4) {
       url = 'http://i.imgur.com/ciDDBOz.png';
-    }
-    if (rank === 2) {
+    } else if (rank < 8) {
       url = 'http://i.imgur.com/Zs7l8AD.png';
-    }
-    if (rank === 3) {
+    } else if (rank < 12) {
       url = 'http://i.imgur.com/t9YI38e.png';
-    }
-    if (rank === 4) {
+    } else if (rank < 16) {
       url = 'http://i.imgur.com/nvkleuQ.png';
-    }
-    if (rank === 5) {
+    } else if (rank < 20) {
       url = 'http://i.imgur.com/NO29rvV.png';
-    }
-    if (rank === 6) {
+    } else if (rank < 24) {
       url = 'http://i.imgur.com/XLicDQr.png';
-    }
-    if (rank === 7) {
+    } else if (rank < 28) {
       url = 'http://i.imgur.com/8OTPb7g.png';
-    }
-    if (rank === 8) {
+    } else if (rank < 32) {
       url = 'http://i.imgur.com/RAn6owu.png';
-    }
-    if (rank === 9) {
+    } else if (rank < 36) {
       url = 'http://i.imgur.com/weaQxmK.png';
-    }
-    if (rank === 10) {
+    } else {
       url = 'http://i.imgur.com/xwSRDv4.png';
     }
     return url;
