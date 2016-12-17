@@ -84,6 +84,7 @@ class ScheduleContainer extends React.Component {
     var context = this;
     var boopState = this.state;
     boopState.ownerId = this.props.user._id;
+    boopState.joinedUsers = [this.props.user._id];
 
     // Sends new boop to database and stores the boop in redux storage
     Utils.postBoop(boopState, function() {
