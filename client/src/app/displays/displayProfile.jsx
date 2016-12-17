@@ -55,10 +55,13 @@ class displayProfile extends React.Component {
 
   componentWillMount(){
     var context = this;
+    // grabs all of the users in the db
     axios.get('/api/users')
     .then(function (response) {
-
+    // grabs the top 10 users by rank
+    //to display on the leaderboard
       var list = response.data;
+      console.log(list)
       list = list.sort(function(a, b){
         return a.rank > b.rank;
       }).reverse().slice(0,10);
@@ -69,7 +72,7 @@ class displayProfile extends React.Component {
     .catch(function (error) {
       console.log(error);
     });
-
+    // grabs the updated logged in user
     axios.get('/user:' + context.props.user.email)
     .then(function (response) {
       var user = response.data;
