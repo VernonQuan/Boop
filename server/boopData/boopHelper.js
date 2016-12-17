@@ -67,7 +67,6 @@ module.exports.getBoops = function(req, res, next) {
 module.exports.deleteAllBoops = function(req, res, next) {
   // delete all boops
   Boop.remove().then(function(data) {
-    console.log('Deleted all boops!');
     res.send(data);
   })
   .catch(function(error) {
