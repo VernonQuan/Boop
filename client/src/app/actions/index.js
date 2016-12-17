@@ -5,9 +5,18 @@ export const addMarker = (newMarker) => {
   }
 }
 
+export const joinBoop = (boopId, userId) => {
+  return {
+    type: 'JOIN_BOOP',
+    boopId, 
+    userId,
+  }
+}
+
 export const logUser = (user) => {
   return {
     type: 'LOG_USER',
     user
   }
 }
+

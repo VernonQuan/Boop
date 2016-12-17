@@ -83,6 +83,19 @@ export const postCheckin = function (boopId, callback) {
     });
 };
 
+export const updateJoinedUsers = function (boopId, boop, callback) {
+  axios({
+    method:'put',
+    url:'/boops/' + boopId,
+    data: boop,
+    contentType: 'application/json'
+    }).then(function(response){
+      callback();
+    }).catch(function(err){
+      throw err;
+    });
+};
+
 export const postBoop = function (boop, callback){
   axios({
     method:'post',
@@ -103,7 +116,7 @@ export const getAllBoops = function(callback) {
     contentType: 'application/json',
   }).then(function(response) {
     //testing comment out 
-    response.data.push( {
+/*    response.data.push( {
         refId: 1234,
         name: 'Gym',
         coords: {
@@ -124,7 +137,7 @@ export const getAllBoops = function(callback) {
         weekdays:[true,true,true,true,true,true,true],
         startDate:'2016-12-12',
         checkIns:[]
-        });
+        });*/
     callback(decorateBoops(response.data));
   }).catch(function(error){
     throw error;
@@ -155,3 +168,4 @@ export const checkinBoop = function(boop, successCb,errorCb) {
   console.log('your device does not support geolocation :(');
  }
 };
+
