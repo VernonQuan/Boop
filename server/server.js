@@ -24,6 +24,7 @@ app.post('/register', userCtrl.register);
 app.post('/login', userCtrl.login);
 app.get('/api/users', userCtrl.allUsers);
 app.put('/newRank', userCtrl.changeRank);
+app.get('/user:email',userCtrl.loggedIn);
 
 // To use on Heroku, set the environment variable:
 // $ heroku set:config MONGOLAB_URL=mongodb://user:password@mongolabstuff
