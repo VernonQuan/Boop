@@ -109,6 +109,19 @@ export const postBoop = function (boop, callback){
     });
 };
 
+// removes a single boop from the db based on the boopId
+export const removeBoop = function (boopId, callback){
+  axios({
+    method:'delete',
+    url:'/boops/' + boopId,
+    contentType: 'application/json',
+    }).then(function(response){
+      callback(response, null);
+    }).catch(function(error) {
+      callback(null, error);
+    });
+};
+
 export const getAllBoops = function(callback) {
   axios({
     method: 'get',
