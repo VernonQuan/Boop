@@ -81,7 +81,6 @@ class CheckinContainer extends React.Component {
     Utils.checkinBoop(boop, () => {
       //if valid update the state
       this.state.boops.find(item => boop.name === item.name).checkedIn = true;
-      console.log(context.props.user.rank);
       checkinCtrl.upRank(context.props.user);
       this.setState({
         loading:false,
