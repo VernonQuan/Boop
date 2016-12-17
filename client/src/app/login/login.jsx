@@ -104,8 +104,6 @@ class Login extends Component {
         hintText='username' />
         ) :
       null;
-    const dropZoneField = signUp ?
-      (<PictureDrop />) : null;
     const standardActions = [
       <RaisedButton
         label='Login'
