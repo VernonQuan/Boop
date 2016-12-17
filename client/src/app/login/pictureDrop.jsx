@@ -6,8 +6,7 @@ class PictureDrop extends React.Component {
   render() {
     return (
       <Dropzone
-        width = "50"
-        height = "50"
+        style="{width: 50px, height: 50px}"
         multiple={false}
         accept="image/*"
       >

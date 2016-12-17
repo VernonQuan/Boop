@@ -83,6 +83,7 @@ class Login extends Component {
 
   render() {
     const signUp = this.state.isSigningUp;
+    const pictureDrop = signUp ? (<PictureDrop />) : null;
     const origin = signUp ?
       (<TextField
         onChange={this.handleChange.bind(this,'placeOfOrigin')}
@@ -136,8 +137,6 @@ class Login extends Component {
               onChange={this.handleChange.bind(this,'email')}
               fullWidth={true}
               hintText='email' />
-            {favoriteActivity}
-            {origin}
             {signUpField}
             <TextField
               onChange={this.handleChange.bind(this,'password')}
@@ -146,6 +145,9 @@ class Login extends Component {
               type='password'
               errorText={this.state.submitError}
              />
+            {favoriteActivity}
+            {origin}
+            {pictureDrop}
           </Dialog>
     );
   }
