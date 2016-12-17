@@ -20,23 +20,23 @@ class Leaderboard extends React.Component {
 
    determinePicture(rank) {
     var url = ''
-    if (rank < 3) {
+    if (rank < 4) {
       url = 'http://i.imgur.com/ciDDBOz.png';
-    } else if (rank < 6) {
+    } else if (rank < 8) {
       url = 'http://i.imgur.com/Zs7l8AD.png';
-    } else if (rank < 9) {
-      url = 'http://i.imgur.com/t9YI38e.png';
     } else if (rank < 12) {
+      url = 'http://i.imgur.com/t9YI38e.png';
+    } else if (rank < 16) {
       url = 'http://i.imgur.com/nvkleuQ.png';
-    } else if (rank < 15) {
+    } else if (rank < 20) {
       url = 'http://i.imgur.com/NO29rvV.png';
-    } else if (rank < 18) {
-      url = 'http://i.imgur.com/XLicDQr.png';
-    } else if (rank < 21) {
-      url = 'http://i.imgur.com/8OTPb7g.png';
     } else if (rank < 24) {
+      url = 'http://i.imgur.com/XLicDQr.png';
+    } else if (rank < 28) {
+      url = 'http://i.imgur.com/8OTPb7g.png';
+    } else if (rank < 32) {
       url = 'http://i.imgur.com/RAn6owu.png';
-    } else if (rank < 27) {
+    } else if (rank < 36) {
       url = 'http://i.imgur.com/weaQxmK.png';
     } else {
       url = 'http://i.imgur.com/xwSRDv4.png';
