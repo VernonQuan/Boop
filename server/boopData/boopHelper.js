@@ -77,8 +77,8 @@ module.exports.deleteAllBoops = function(req, res, next) {
 
 module.exports.updateJoinedUsers = function(req, res, next) {
   var refId = req.params.id;
-
-  Boop.findOneAndUpdate(refId, req.body, {new: true})
+  console.log(req.body);
+  Boop.findOneAndUpdate({refId: refId}, req.body, {new: true})
   .then(function(data) {
     res.send(data);
   })

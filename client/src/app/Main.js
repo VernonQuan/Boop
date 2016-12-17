@@ -3,6 +3,7 @@
  * which incorporates components provided by Material-UI.
  */
 import React, {Component} from 'react';
+import {browserHistory} from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 import Dialog from 'material-ui/Dialog';
@@ -59,6 +60,7 @@ class Main extends Component {
   }
 
   handleLogout() {
+    browserHistory.push('/');
     loginCtrl.logout();
     this.setState({
       isLoggedIn: false

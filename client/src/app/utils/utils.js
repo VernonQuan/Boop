@@ -83,6 +83,19 @@ export const postCheckin = function (boopId, callback) {
     });
 };
 
+export const updateJoinedUsers = function (boopId, boop, callback) {
+  axios({
+    method:'put',
+    url:'/boops/' + boopId,
+    data: boop,
+    contentType: 'application/json'
+    }).then(function(response){
+      callback();
+    }).catch(function(err){
+      throw err;
+    });
+};
+
 export const postBoop = function (boop, callback){
   axios({
     method:'post',
@@ -155,3 +168,4 @@ export const checkinBoop = function(boop, successCb,errorCb) {
   console.log('your device does not support geolocation :(');
  }
 };
+
