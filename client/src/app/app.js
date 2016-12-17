@@ -3,7 +3,8 @@ import {render} from 'react-dom';
 import {Router, Route, Link, browserHistory} from 'react-router';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import boopApp from './reducers/index.js';
 
 import Main from './Main'; // Our custom react components
@@ -21,7 +22,7 @@ import profileDisplay from './displays/displayProfile.jsx';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-let store = createStore(boopApp);
+let store = createStore(boopApp, applyMiddleware(thunk));
 
 // Render the main app react component into the app div.
 // For more details see: https://facebook.github.io/react/docs/top-level-api.html#react.render

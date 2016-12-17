@@ -8,6 +8,7 @@ import Snackbar from 'material-ui/Snackbar';
 import { Link } from 'react-router';
 import * as Utils from '../utils/utils.js';
 import InfoWindow from './infoWindow.jsx';
+import ReduxThunk from 'redux-thunk';
 
 const actionStyle = {
   color: 'white',
@@ -37,6 +38,9 @@ class Map extends Component {
     this.mapInstance = {};
     this.googleMaps = {};
     this.centerMarker = {};
+    this.state = {
+      boopId: 0,
+    }
   }
   componentDidMount() {
     // This is public; restricted by IP
@@ -112,10 +116,8 @@ class Map extends Component {
       div.id = marker.refId;
       div.className += 'infoWindow';
 
-      // checks if the user id is present within the joinedUSers array and returns true 
-      var joined = context.props.markers[marker.refId].joinedUsers.find((element) => element === context.props.user._id) === undefined ? false : true;
-
-      render( <InfoWindow joined={joined} user={context.props.user} boop={context.props.markers[marker.refId]} join={(boopId, userId) => context.join(boopId, userId)}/>, div );
+      // checks if the user id is present within the joinedUSers array and returns true within joined
+      render( <InfoWindow joined={context.props.markers[marker.refId].joinedUsers.find((element) => element === context.props.user._id) === undefined ? false : true} user={context.props.user} boop={context.props.markers[marker.refId]} join={(boopId, userId) => context.join(boopId, userId)}/>, div );
       infoWindow.setContent( div );
       infoWindow.open(context.mapInstance, newMarker);
     });
@@ -125,10 +127,11 @@ class Map extends Component {
   join(boopId, userId) {
     // update redux storage with joinedUser
     this.props.dispatch(joinBoop(boopId, userId));
+    console.log('markers', this.props.markers);
     // update db
-    Utils.updateJoinedUsers(boopId, this.props.markers[boopId], function() {
-      console.log('database updated');
-    });
+    console.log('db updating with', this.props.markers[boopId]);
+    this.setState({boopId: boopId});
+    
   }
 
   getCoordinates() {
@@ -140,6 +143,9 @@ class Map extends Component {
 
   render() {
     console.log('maps is rendering');
+    Utils.updateJoinedUsers(this.state.boopId, this.props.markers[this.state.boopId], function() {
+      console.log('database updated');
+    });
     return (
       <div>
         <div id="map"> 
