@@ -66,12 +66,24 @@ class InfoWindow extends React.Component {
     this.props.join(this.props.boop.refId, this.props.user._id);
   }
 
+  leave() {
+    // optimistic update to internal infowindow state
+    this.setState({internalJoined: false});
+    this.setState({joinedUsersLength: this.state.joinedUsersLength - 1});
+    // invoke function from map to send dispatch to redux storage
+    this.props.leave(this.props.boop.refId, this.props.user._id);
+  }
+
   render() {
     // only renders a join button if the boop is for more than one person, the boop has less than the limit in joinedUsers, and joinedUsers does not contain the user
     const Join = this.props.boop.limit > 1 && this.state.joinedUsersLength < this.props.boop.limit && !this.state.internalJoined ? <FlatButton
       label= 'Join'
       style= {notCheckedStyle}
       onTouchTap={() => this.join()}/> : null;
+    const Leave = this.state.internalJoined ? <FlatButton
+      label= 'Leave'
+      style= {checkedStyle}
+      onTouchTap={() => this.leave()}/> : null;
       console.log('rendering infowindow');
   return (
     <MuiThemeProvider muiTheme={muiTheme}>
@@ -85,7 +97,7 @@ class InfoWindow extends React.Component {
           {this.state.joinedUsersLength}/{this.props.boop.limit} users joined
         </CardText>
         <CardActions style={{'textAlign': 'center'}}>
-          { Join }
+          { Join } { Leave }
         </CardActions> 
       </Card>
       </MuiThemeProvider>
