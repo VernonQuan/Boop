@@ -47,31 +47,32 @@ class InfoWindow extends React.Component {
     this.socket = io();
     this.state = {
       joinedUsersLength: 0,
-      joined: false,
+      internalJoined: false,
     }
   }
 
   componentWillMount() {
     this.setState({joinedUsersLength: this.props.boop.joinedUsers.length});
-    this.setState({joined: this.props.joined});
+    this.setState({internalJoined: this.props.joined});
   }
   
   join() {
     // emit socket event join to notify owner of boop that a user has joined their event
-    // TEMPORARY FOR TESTING ONLY. WORKING CODE
-    //this.socket.emit('join', this.props.boop.name, this.props.user.username);
+    this.socket.emit('join', this.props.boop.name, this.props.user.username);
+    // optimistic update to internal infowindow state
+    this.setState({internalJoined: true});
     this.setState({joinedUsersLength: this.state.joinedUsersLength + 1});
-    this.setState({joined: true});
     // invoke function from map to send dispatch to redux storage
     this.props.join(this.props.boop.refId, this.props.user._id);
   }
 
   render() {
     // only renders a join button if the boop is for more than one person, the boop has less than the limit in joinedUsers, and joinedUsers does not contain the user
-    const Join = this.props.boop.limit > 1 && this.state.joinedUsersLength < this.props.boop.limit && !this.props.joined ? <FlatButton
+    const Join = this.props.boop.limit > 1 && this.state.joinedUsersLength < this.props.boop.limit && !this.state.internalJoined ? <FlatButton
       label= 'Join'
       style= {notCheckedStyle}
       onTouchTap={() => this.join()}/> : null;
+      console.log('rendering infowindow');
   return (
     <MuiThemeProvider muiTheme={muiTheme}>
     <Card style={cardStyle}>

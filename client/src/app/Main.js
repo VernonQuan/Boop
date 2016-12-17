@@ -54,7 +54,6 @@ class Main extends Component {
   componentDidMount() {
     var context = this;
     this.socket.on('join', function(boop, user) {
-      console.log(user, 'joined', boop);
       context.setState({feedback: {...context.state.feedback, open: true, message: user + ' joined ' + boop }});
       window.setTimeout(() => context.setState({feedback: {...context.state.feedback, open: false}}), 2000);
     });

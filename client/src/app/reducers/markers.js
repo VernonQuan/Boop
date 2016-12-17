@@ -1,3 +1,5 @@
+var Immutable = require('immutable');
+
 const markers = (state = {}, action) => {
   switch (action.type) {
     // adds either a full array of boops, replacing the entire current state or appends individual boops to the state
@@ -17,6 +19,7 @@ const markers = (state = {}, action) => {
     // appends the userId to the joinedUsers of the boop
 
     case 'JOIN_BOOP':
+    console.log('passed userId in reducer', action.userId);
       return {
         ...state, 
         [action.boopId]: {
