@@ -8,7 +8,6 @@ boopRouter.get('/', boopHelper.getBoops);
 boopRouter.post('/', boopHelper.addBoop);
 boopRouter.delete('/', boopHelper.deleteAllBoops);
 boopRouter.put('/:id', boopHelper.updateJoinedUsers);
-
 boopRouter.post('/:id', boopHelper.saveCheckIn);
 
 module.exports = boopRouter;

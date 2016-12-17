@@ -27,6 +27,7 @@ const styles = {
   },
 };
 
+
 const muiTheme = getMuiTheme({
   palette: {
     accent1Color: deepOrange500,
@@ -66,7 +67,7 @@ class Main extends Component {
       isLoggedIn: false
     });
   }
-  
+
   handleDrawerToggle = () => this.setState({open: !this.state.open});
   handleClose = () => this.setState({open: false});
 
@@ -75,7 +76,9 @@ class Main extends Component {
       (<FlatButton label="Logout"
         onTouchTap={this.handleLogout.bind(this)}/>
       ) :
-      null;
+      (<FlatButton label="Login"
+       />
+      );
     const LoginModal = !this.state.isLoggedIn ?
       (<Login main={this} />) :
       null;

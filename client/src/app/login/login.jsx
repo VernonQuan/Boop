@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField';
 import * as loginCtrl from './loginCtrl';
-
+import PictureDrop from './pictureDrop.jsx';
 class Login extends Component {
   constructor(props, context) {
     super(props, context);
@@ -34,6 +34,12 @@ class Login extends Component {
       context.props.main.setState({isLoggedIn: true});
       // plugs in email and password in an object into dispatch
       context.props.dispatch(logUser(res.data.userData));
+    })
+    .catch(err => {
+      const msg = err.response.data.message;
+      this.setState({
+        submitError: msg
+      });
     })
   };
 
@@ -98,7 +104,8 @@ class Login extends Component {
         hintText='username' />
         ) :
       null;
-
+    const dropZoneField = signUp ?
+      (<PictureDrop />) : null;
     const standardActions = [
       <RaisedButton
         label='Login'
@@ -134,6 +141,7 @@ class Login extends Component {
             {favoriteActivity}
             {origin}
             {signUpField}
+            {dropZoneField}
             <TextField
               onChange={this.handleChange.bind(this,'password')}
               fullWidth={true}
