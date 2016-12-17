@@ -17,7 +17,7 @@ var userSchema = new mongoose.Schema({
     latitude: Number,
     longitude: Number
   },
-  rank: {type: Number, default: 3},
+  rank: {type: Number, default: 3, max: 10},
   picture: String,
   origin: String,
   interests: [String],
