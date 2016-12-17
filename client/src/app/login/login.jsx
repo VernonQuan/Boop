@@ -139,7 +139,6 @@ class Login extends Component {
             {favoriteActivity}
             {origin}
             {signUpField}
-            {dropZoneField}
             <TextField
               onChange={this.handleChange.bind(this,'password')}
               fullWidth={true}
