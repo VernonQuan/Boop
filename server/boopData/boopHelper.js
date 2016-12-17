@@ -67,6 +67,17 @@ module.exports.deleteAllBoops = function(req, res, next) {
   });
 };
 
+module.exports.deleteBoop = function(req, res, next) {
+  // deletes single boop based on id
+  var refId = req.params.id;
+  Boop.remove({refId: refId}).then(function(data) {
+    res.send(data);
+  })
+  .catch(function(error) {
+    next(error);
+  })
+};
+
 module.exports.updateJoinedUsers = function(req, res, next) {
   var refId = req.params.id;
   Boop.findOneAndUpdate({refId: refId}, req.body, {new: true})
