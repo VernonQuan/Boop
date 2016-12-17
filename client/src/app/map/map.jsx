@@ -116,9 +116,9 @@ class Map extends Component {
       div.id = marker.refId;
       div.className += 'infoWindow';
 
-      // checks if the user id is present within the joinedUSers array and returns true within joined
-      render( <InfoWindow joined={context.props.markers[marker.refId].joinedUsers.find((element) => element === context.props.user._id) === undefined ? false : true} 
-        user={context.props.user} boop={context.props.markers[marker.refId]} join={(boopId, userId) => context.join(boopId, userId)} leave={(boopId, userId) => context.leave(boopId, userId)}/>, div );
+      // checks if the user id is present within the joinedUsers array and returns true within joined, only allows users who are not the owner of the boop to leave
+      var joined = context.props.markers[marker.refId].joinedUsers.find((element) => element === context.props.user._id);
+      render( <InfoWindow owner={context.props.markers[marker.refId].ownerId} joined={joined} user={context.props.user} boop={context.props.markers[marker.refId]} join={(boopId, userId) => context.join(boopId, userId)} leave={(boopId, userId) => context.leave(boopId, userId)}/>, div );
       infoWindow.setContent( div );
       infoWindow.open(context.mapInstance, newMarker);
     });

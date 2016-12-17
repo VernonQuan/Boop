@@ -80,7 +80,7 @@ class InfoWindow extends React.Component {
       label= 'Join'
       style= {notCheckedStyle}
       onTouchTap={() => this.join()}/> : null;
-    const Leave = this.state.internalJoined ? <FlatButton
+    const Leave = this.state.internalJoined && this.props.owner !== this.props.user._id ? <FlatButton
       label= 'Leave'
       style= {checkedStyle}
       onTouchTap={() => this.leave()}/> : null;
