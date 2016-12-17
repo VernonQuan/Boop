@@ -17,6 +17,7 @@ const markers = (state = {}, action) => {
     // appends the userId to the joinedUsers of the boop
 
     case 'JOIN_BOOP':
+    console.log('markers', state);
       return {
         ...state, 
         [action.boopId]: {
