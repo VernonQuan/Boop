@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
+import SwipeableViews from 'react-swipeable-views';
 import { addMarker } from '../../actions/index.js';
 import * as Utils from '../../utils/utils.js';
 import BoopList from './boopList.jsx';
@@ -11,6 +13,7 @@ import Snackbar from 'material-ui/Snackbar';
 import {Router, Route, Link} from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import * as checkinCtrl from '../checkinController.js';
+import Map from '../../map/map.jsx';
 //import Controls from './controls.jsx';
 
 
@@ -103,23 +106,20 @@ class CheckinContainer extends React.Component {
     if(!this.state.loading) {
       return (
         <MuiThemeProvider muiTheme={muiTheme}>
+        <SwipeableViews onChangeIndex={(index) => {index === 1 ? browserHistory.push('/map') : null}}>
           <div>
             <BoopList boops={this.props.markers}
             handleCheckinBoop={this.handleCheckinBoop}/>
-
-            <RaisedButton
-            // onTouchTap={this.handleCreateBoop}
-            buttonStyle={createStyle}
-            containerElement={<Link to='/map'/>}
-            fullWidth = {true}
-            >Create Boop</RaisedButton>
-
 
             <Snackbar
             open={this.state.feedback.open}
             message={this.state.feedback.message}
             autoHideDuration={this.state.feedback.autoHideDuration}/>
           </div>
+          <div>
+
+          </div>
+        </SwipeableViews>
         </MuiThemeProvider>
       );
     } else {

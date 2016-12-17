@@ -31,7 +31,6 @@ const markers = (state = {}, action) => {
     // removes the userId from the joinedUsers array
     case 'LEAVE_BOOP':
       var removedUserArr = state[action.boopId].joinedUsers.filter(value => (value !== action.userId));
-      console.log(removedUserArr);
       return {
         ...state, 
         [action.boopId]: {
