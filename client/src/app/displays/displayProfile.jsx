@@ -26,7 +26,8 @@ class displayProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      leaderboardList : [{rank:3,username: 'blake',favoriteActivity:'basketball',origin:'Houston'}]
+      leaderboardList : [{rank:3,username: 'blake',favoriteActivity:'basketball',origin:'Houston'}],
+      currentUser: [{rank:3,username: 'blake',favoriteActivity:'basketball',origin:'Houston'}]
 
     }
   };
@@ -77,12 +78,20 @@ class displayProfile extends React.Component {
   .catch(function (error) {
     console.log(error);
   });
+    axios.get('/user:' + context.props.user.email)
+    .then(function (response) {
 
-    }
+      var user = response.data;
+      console.log(user, 'this is user');
+      context.setState({
+        currentUser: user[0]
+      });
+    });
+  }
 
   render(){
 
-    return(<div><Table style={{width: '85%'}}>
+    return(<div><Table style={{width: '100%'}}>
     <TableHeader displaySelectAll= {false} adjustForCheckbox = {false} >
       <TableRow>
         <TableHeaderColumn>Rank</TableHeaderColumn>
@@ -94,10 +103,10 @@ class displayProfile extends React.Component {
         <TableRowColumn><Chip style={styles}>
 
           <Avatar src={this.determinePicture(this.props.user.rank)} />
-        {this.props.user.rank}</Chip></TableRowColumn>
+        {this.state.currentUser.rank}</Chip></TableRowColumn>
         <TableRowColumn><Chip style={styles}>
           <Avatar src="https://s3.amazonaws.com/uifaces/faces/twitter/rogie/48.jpg" />
-        {this.props.user.username}</Chip>
+        {this.state.currentUser.username}</Chip>
         </TableRowColumn>
       </TableRow>
     </TableBody>

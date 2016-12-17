@@ -80,6 +80,18 @@ module.exports = {
       }
     })
   },
+  loggedIn: function(req, res, next) {
+    var refEmail = req.params.email;
+    refEmail = refEmail.substring(1);
+    console.log(refEmail, 'this is refEmail');
+    User.find({'email':refEmail}, function(err, user) {
+      if (err) {
+        res.status(400).json({message: 'Unable to retrieve user'});
+      } else {
+        res.send(user);
+      }
+    })
+  },
   changeRank: function(req, res, next) {
   var email = req.body.email;
   User.findOneAndUpdate({"email":email},{ $inc : { "rank" : 1 } }, {new: true})
