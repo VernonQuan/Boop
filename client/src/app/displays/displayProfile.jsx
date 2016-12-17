@@ -112,7 +112,7 @@ class displayProfile extends React.Component {
     </TableBody>
   </Table>
   <h3 style={h3Style}>LeaderBoard</h3>
-  <Table style={{width: '85%'}}>
+  <Table style={{width: '100%'}}>
     <TableHeader displaySelectAll= {false} adjustForCheckbox = {false}>
       <TableRow>
         <TableHeaderColumn>Rank</TableHeaderColumn>
