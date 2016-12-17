@@ -37,6 +37,7 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-dropzone": "^3.7.3",
+    "react-dropzone-s3-uploader": "^0.9.0",
     "react-native": "^0.39.2",
     "react-native-camera": "^0.4.0",
     "react-redux": "^4.4.6",

@@ -83,6 +83,7 @@ class Login extends Component {
 
   render() {
     const signUp = this.state.isSigningUp;
+    const pictureDrop = signUp ? (<PictureDrop />) : null;
     const origin = signUp ?
       (<TextField
         onChange={this.handleChange.bind(this,'placeOfOrigin')}
@@ -104,8 +105,6 @@ class Login extends Component {
         hintText='username' />
         ) :
       null;
-    const dropZoneField = signUp ?
-      (<PictureDrop />) : null;
     const standardActions = [
       <RaisedButton
         label='Login'
@@ -138,10 +137,7 @@ class Login extends Component {
               onChange={this.handleChange.bind(this,'email')}
               fullWidth={true}
               hintText='email' />
-            {favoriteActivity}
-            {origin}
             {signUpField}
-            {dropZoneField}
             <TextField
               onChange={this.handleChange.bind(this,'password')}
               fullWidth={true}
@@ -149,6 +145,9 @@ class Login extends Component {
               type='password'
               errorText={this.state.submitError}
              />
+            {favoriteActivity}
+            {origin}
+            {pictureDrop}
           </Dialog>
     );
   }
