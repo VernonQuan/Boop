@@ -67,7 +67,11 @@ class InfoWindow extends React.Component {
   }
 
   leave() {
-    console.log('leave function');
+    // optimistic update to internal infowindow state
+    this.setState({internalJoined: false});
+    this.setState({joinedUsersLength: this.state.joinedUsersLength - 1});
+    // invoke function from map to send dispatch to redux storage
+    this.props.leave(this.props.boop.refId, this.props.user._id);
   }
 
   render() {

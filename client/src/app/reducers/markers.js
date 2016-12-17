@@ -17,9 +17,7 @@ const markers = (state = {}, action) => {
         };
       }
     // appends the userId to the joinedUsers of the boop
-
     case 'JOIN_BOOP':
-    console.log('passed userId in reducer', action.userId);
       return {
         ...state, 
         [action.boopId]: {
@@ -28,6 +26,17 @@ const markers = (state = {}, action) => {
             ...state[action.boopId].joinedUsers,
             action.userId
           ]
+        }
+      }
+    // removes the userId from the joinedUsers array
+    case 'LEAVE_BOOP':
+      var removedUserArr = state[action.boopId].joinedUsers.filter(value => (value !== action.userId));
+      console.log(removedUserArr);
+      return {
+        ...state, 
+        [action.boopId]: {
+          ...state[action.boopId],
+          joinedUsers: removedUserArr
         }
       }
     default: 
