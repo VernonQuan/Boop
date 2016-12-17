@@ -15,13 +15,12 @@ module.exports.addBoop = function (req, res, next) {
     .then(function(found){
       if (found) {
         return next(new Error('Boop refId already exists'));
-      } else{
+      }else{
         return createBoop(boop);
       }
     })
     .then(function (createdBoop) {
-      if (createdBoop) {
-        res.json(createdBoop);
+      if (createdBoop) { res.json(createdBoop);
       }
     })
     .fail(function (error) {
@@ -32,7 +31,6 @@ module.exports.addBoop = function (req, res, next) {
 module.exports.saveCheckIn = function(req, res, next) {
   //add the current date to the boops checkIn property
   //TODO: check for a preexisting check-in for this date first
-
   var refId = req.params.id;
 
   findBoop({refId: refId})
@@ -47,42 +45,34 @@ module.exports.saveCheckIn = function(req, res, next) {
         res.json('already checked in');
       }
     })
-    .then(function(savedBoop) {
-      res.send(savedBoop);
+    .then(function(savedBoop) { res.send(savedBoop);
     });
 };
 
 module.exports.getBoops = function(req, res, next) {
   //send an array containing all the boops back to the user.
-
   findAllBoops()
-    .then(function(boops){
-      res.send(boops);
-    })
+    .then(function(boops){ res.send(boops);})
     .fail(function (error) {
       next(error);
-    });
+  });
 };
 
 module.exports.deleteAllBoops = function(req, res, next) {
   // delete all boops
-  Boop.remove().then(function(data) {
-    res.send(data);
-  })
-  .catch(function(error) {
-    next(error);
-  })
+  Boop.remove()
+    .then(function(data) { res.send(data); })
+    .catch(function(error) {
+      next(error);
+  });
 };
 
 module.exports.updateJoinedUsers = function(req, res, next) {
   var refId = req.params.id;
-
   Boop.findOneAndUpdate({refId: refId}, req.body, {new: true})
-  .then(function(data) {
-    res.send(data);
-  })
-  .catch(function(error) {
-    next(error);
-  })
+      .then(function(data) { res.send(data); })
+      .catch(function(error) {
+        next(error);
+      });
 }
 

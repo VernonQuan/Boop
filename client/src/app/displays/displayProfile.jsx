@@ -13,13 +13,8 @@ const h3Style = {
   textAlign: 'center'
 };
 const styles = {
-  chip: {
-    margin: 4,
-  },
-  wrapper: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
+  chip: { margin: 4 },
+  wrapper: { display: 'flex', flexWrap: 'wrap' }
 };
 
 class displayProfile extends React.Component {
@@ -61,26 +56,22 @@ class displayProfile extends React.Component {
   componentWillMount(){
     var context = this;
     axios.get('/api/users')
-  .then(function (response) {
-
-    var list = response.data;
-    list = list.sort(function(a, b){
-      return a.rank > b.rank;
-    });
-    list = list.reverse().slice(0,10);
-    context.setState({
-
-      leaderboardList : list
-    })
-
-
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-    axios.get('/user:' + context.props.user.email)
     .then(function (response) {
 
+      var list = response.data;
+      list = list.sort(function(a, b){
+        return a.rank > b.rank;
+      }).reverse().slice(0,10);
+      context.setState({
+        leaderboardList : list
+      })
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+    axios.get('/user:' + context.props.user.email)
+    .then(function (response) {
       var user = response.data;
       context.setState({
         currentUser: user[0]

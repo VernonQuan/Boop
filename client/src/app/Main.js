@@ -21,17 +21,12 @@ import * as loginCtrl from './login/loginCtrl';
 import { Link } from 'react-router'
 
 const styles = {
-  container: {
-    textAlign: 'center',
-    paddingTop: 200,
-  },
+  container: { textAlign: 'center', paddingTop: 200
+  }
 };
 
-
 const muiTheme = getMuiTheme({
-  palette: {
-    accent1Color: deepOrange500,
-  },
+  palette: { accent1Color: deepOrange500 }
 });
 
 class Main extends Component {

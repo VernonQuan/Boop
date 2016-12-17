@@ -115,35 +115,12 @@ export const getAllBoops = function(callback) {
     url: url + '/boops',
     contentType: 'application/json',
   }).then(function(response) {
-    //testing comment out 
-/*    response.data.push( {
-        refId: 1234,
-        name: 'Gym',
-        coords: {
-          latitude: 37.784,
-          longitude: -122.40903
-        },
-        weekdays:[true,true,true,true,true,true,true],
-        startDate:'2016-12-12',
-        checkIns:[]
-        });
-    response.data.push( {
-        refId: 1234,
-        name: 'Work at WeWork',
-        coords: {
-          latitude: 37.784,
-          longitude: -122.40903
-        },
-        weekdays:[true,true,true,true,true,true,true],
-        startDate:'2016-12-12',
-        checkIns:[]
-        });*/
+
     callback(decorateBoops(response.data));
   }).catch(function(error){
     throw error;
   });
 };
-
 
 export const checkinBoop = function(boop, successCb,errorCb) {
   //get current location
