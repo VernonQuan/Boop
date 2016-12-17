@@ -82,7 +82,6 @@ class displayProfile extends React.Component {
     .then(function (response) {
 
       var user = response.data;
-      console.log(user, 'this is user');
       context.setState({
         currentUser: user[0]
       });
