@@ -18,6 +18,10 @@ import Snackbar from 'material-ui/Snackbar';
 import Login from './login/login.jsx';
 import * as loginCtrl from './login/loginCtrl';
 import { Link } from 'react-router'
+import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 const styles = {
   container: {
@@ -71,8 +75,17 @@ class Main extends Component {
 
   render() {
     const logOutButton = this.state.isLoggedIn ?
-      (<FlatButton label="Logout"
-        onTouchTap={this.handleLogout.bind(this)}/>
+      (  <IconMenu
+          iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+          targetOrigin={{horizontal: 'right', vertical: 'top'}}
+          anchorOrigin={{horizontal: 'right', vertical: 'top'}}>
+          <MenuItem primaryText="Drinks" />
+          <MenuItem primaryText="Food" />
+          <MenuItem primaryText="Gym" />
+          <MenuItem primaryText="Outdoors" />
+          <MenuItem primaryText="Sports" />
+          <MenuItem onTouchTap={this.handleLogout.bind(this)} primaryText="Sign out" />
+        </IconMenu>
       ) :
       (<FlatButton label="Login"
        />
