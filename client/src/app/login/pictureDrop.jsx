@@ -3,7 +3,7 @@ import Dropzone from 'react-dropzone';
 import request from 'superagent';
 
 const CLOUDINARY_UPLOAD_PRESET = 'omnipotentBoop';
-const CLOUDINARY_UPLOAD_URL = 'http://cloudinary.359834833498217:3c-AmfTB8zd-uOaxkF0p-kJiwQM@boop';
+const CLOUDINARY_UPLOAD_URL = 'cloudinary://359834833498217:3c-AmfTB8zd-uOaxkF0p-kJiwQM@boop';
 
 class PictureDrop extends React.Component {
   constructor(props) {

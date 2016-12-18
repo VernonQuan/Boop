@@ -3,7 +3,7 @@ module.exports = [
     email: 'vernon@hackreactor.com',
     username: 'Vernon',
     password: 'vernon',
-    rank: 5,
+    rank: 10,
     origin: 'San Francisco',
     favoriteActivity: 'Vidja Gemes'
   },
@@ -11,7 +11,7 @@ module.exports = [
     email: 'blake@hackreactor.com',
     username: 'Blake',
     password: 'blake',
-    rank: 7,
+    rank: 30,
     origin: 'H-Town',
     favoriteActivity: 'Blaze it!'
   },
@@ -19,7 +19,7 @@ module.exports = [
     email: 'rob@hackreactor.com',
     username: 'Robert',
     password: 'rob',
-    rank: 6,
+    rank: 20,
     origin: 'Not San Francisco',
     favoriteActivity: 'Drank'
   },
@@ -27,7 +27,7 @@ module.exports = [
     email: 'fiona@hackreactor.com',
     username: 'Fiona',
     password: 'fiona',
-    rank: 10,
+    rank: 40,
     origin: 'San Francisco',
     favoriteActivity: 'EVERYTHING'
   }

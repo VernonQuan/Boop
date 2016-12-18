@@ -8,6 +8,7 @@ var io = require('socket.io')(http);
 var mongoose = require('mongoose');
 var passport = require('passport');
 var boopRouter = require('./routers/router.js');
+var cloudinary = require('cloudinary');
 require('./config/middleware.js')(app, express);
 
 var Boop = require('./boopData/boopSchema');
