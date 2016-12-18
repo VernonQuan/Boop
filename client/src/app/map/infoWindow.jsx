@@ -30,10 +30,6 @@ const cardStyle = {
   'margin': '10px'
 };
 
-const linkStyle = {
-  color:'white',
-  'text-decoration':'none'
-};
 
 const muiTheme = getMuiTheme({
   palette: {
