@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {browserHistory} from 'react-router';
 import { addMarker } from '../../actions/index.js';
 import DropDownList from './dropdown.jsx';
 import CommitButton from './commitButton.jsx';
@@ -90,6 +91,7 @@ class ScheduleContainer extends React.Component {
       console.log('posted!');
       context.props.dispatch(addMarker(boopState));
     });
+    browserHistory.push('/');
   }
 
   // onDropDownSelect(event, index, value) {

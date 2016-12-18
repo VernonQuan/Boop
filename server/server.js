@@ -29,8 +29,9 @@ app.use('/s3', require('react-dropzone-s3-uploader/s3router')({
 
 app.post('/register', userCtrl.register);
 app.post('/login', userCtrl.login);
-app.get('/api/users', userCtrl.allUsers);
 app.put('/newRank', userCtrl.changeRank);
+app.get('/api/users', userCtrl.allUsers);
+app.get('/user:email',userCtrl.loggedIn);
 
 // To use on Heroku, set the environment variable:
 // $ heroku set:config MONGOLAB_URL=mongodb://user:password@mongolabstuff
@@ -39,7 +40,6 @@ mongoose.connect(db);
 
 io.on('connection', function(socket){
   socket.on('join', function(boop, user) {
-    console.log(user, 'joined', boop);
     io.emit('join', boop, user);
   });
 });

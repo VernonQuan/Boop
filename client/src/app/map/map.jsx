@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import {render, unmountComponentAtNode} from 'react-dom'
 import { connect } from 'react-redux';
-import { joinBoop } from '../actions/index.js';
+import { joinBoop, leaveBoop } from '../actions/index.js';
 import loadGoogleMapsAPI from 'load-google-maps-api';
 import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
 import { Link } from 'react-router';
 import * as Utils from '../utils/utils.js';
 import InfoWindow from './infoWindow.jsx';
+import ReduxThunk from 'redux-thunk';
 
 const actionStyle = {
   color: 'white',
@@ -38,7 +39,7 @@ class Map extends Component {
     this.googleMaps = {};
     this.centerMarker = {};
     this.state = {
-      boops: {},
+      boopId: 0,
     }
   }
   componentDidMount() {
@@ -91,10 +92,6 @@ class Map extends Component {
         context.centerMarker.setPosition(centerLatLng);
       });*/
       
-      // Put redux storage data into local map state for injection into infowindow
-      this.setState({boops: this.props.markers});
-      console.log('local state maps', this.state.boops);
-
       // Retrieving from store to render events on the map
       Object.keys(context.props.markers).map((key) => {
         context.populateMap(googleMaps, context.props.markers[key]);
@@ -118,10 +115,10 @@ class Map extends Component {
       var div = document.createElement('div');
       div.id = marker.refId;
       div.className += 'infoWindow';
-      // checks if the user id is present within the joinedUSers array and returns true 
-      var joined = context.state.boops[marker.refId].joinedUsers.find((element) => element === context.props.user._id) === undefined ? false : true;
 
-      render( <InfoWindow joined={joined}user={context.props.user} boop={context.state.boops[marker.refId]} join={(boopId, userId) => context.join(boopId, userId)}/>, div );
+      // checks if the user id is present within the joinedUsers array and returns true within joined, only allows users who are not the owner of the boop to leave
+      var joined = context.props.markers[marker.refId].joinedUsers.find((element) => element === context.props.user._id);
+      render( <InfoWindow owner={context.props.markers[marker.refId].ownerId} joined={joined} user={context.props.user} boop={context.props.markers[marker.refId]} join={(boopId, userId) => context.join(boopId, userId)} leave={(boopId, userId) => context.leave(boopId, userId)}/>, div );
       infoWindow.setContent( div );
       infoWindow.open(context.mapInstance, newMarker);
     });
@@ -131,12 +128,15 @@ class Map extends Component {
   join(boopId, userId) {
     // update redux storage with joinedUser
     this.props.dispatch(joinBoop(boopId, userId));
-    // align local state with redux storage
-    this.setState({boops: this.props.markers});
+    console.log('markers', this.props.markers);
+    this.setState({boopId: boopId});
+  }
+
+  leave(boopId, userId) {
+    // update redux storage to remove user who is leaving
+    this.props.dispatch(leaveBoop(boopId, userId));
     // update db
-    Utils.updateJoinedUsers(boopId, this.props.markers[boopId], function() {
-      console.log('database updated');
-    });
+    this.setState({boopId: boopId});
   }
 
   getCoordinates() {
@@ -148,6 +148,11 @@ class Map extends Component {
 
   render() {
     console.log('maps is rendering');
+    if (this.state.boopId !== 0) {
+      Utils.updateJoinedUsers(this.state.boopId, this.props.markers[this.state.boopId], function() {
+        console.log('database updated');
+      });
+    }
     return (
       <div>
         <div id="map"> 

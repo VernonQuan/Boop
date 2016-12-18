@@ -109,41 +109,31 @@ export const postBoop = function (boop, callback){
     });
 };
 
+// removes a single boop from the db based on the boopId
+export const removeBoop = function (boopId, callback){
+  axios({
+    method:'delete',
+    url:'/boops/' + boopId,
+    contentType: 'application/json',
+    }).then(function(response){
+      callback(response, null);
+    }).catch(function(error) {
+      callback(null, error);
+    });
+};
+
 export const getAllBoops = function(callback) {
   axios({
     method: 'get',
     url: url + '/boops',
     contentType: 'application/json',
   }).then(function(response) {
-    //testing comment out 
-/*    response.data.push( {
-        refId: 1234,
-        name: 'Gym',
-        coords: {
-          latitude: 37.784,
-          longitude: -122.40903
-        },
-        weekdays:[true,true,true,true,true,true,true],
-        startDate:'2016-12-12',
-        checkIns:[]
-        });
-    response.data.push( {
-        refId: 1234,
-        name: 'Work at WeWork',
-        coords: {
-          latitude: 37.784,
-          longitude: -122.40903
-        },
-        weekdays:[true,true,true,true,true,true,true],
-        startDate:'2016-12-12',
-        checkIns:[]
-        });*/
+
     callback(decorateBoops(response.data));
   }).catch(function(error){
     throw error;
   });
 };
-
 
 export const checkinBoop = function(boop, successCb,errorCb) {
   //get current location

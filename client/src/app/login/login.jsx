@@ -38,9 +38,7 @@ class Login extends Component {
     })
     .catch(err => {
       const msg = err.response.data.message;
-      this.setState({
-        submitError: msg
-      });
+      this.setState({ submitError: msg });
     })
   };
 

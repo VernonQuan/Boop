@@ -13,6 +13,14 @@ export const joinBoop = (boopId, userId) => {
   }
 }
 
+export const leaveBoop = (boopId, userId) => {
+  return {
+    type: 'LEAVE_BOOP',
+    boopId, 
+    userId,
+  }
+}
+
 export const logUser = (user) => {
   return {
     type: 'LOG_USER',

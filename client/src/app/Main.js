@@ -21,17 +21,12 @@ import * as loginCtrl from './login/loginCtrl';
 import { Link } from 'react-router'
 
 const styles = {
-  container: {
-    textAlign: 'center',
-    paddingTop: 200,
-  },
+  container: { textAlign: 'center', paddingTop: 200
+  }
 };
 
-
 const muiTheme = getMuiTheme({
-  palette: {
-    accent1Color: deepOrange500,
-  },
+  palette: { accent1Color: deepOrange500 }
 });
 
 class Main extends Component {
@@ -54,7 +49,6 @@ class Main extends Component {
   componentDidMount() {
     var context = this;
     this.socket.on('join', function(boop, user) {
-      console.log(user, 'joined', boop);
       context.setState({feedback: {...context.state.feedback, open: true, message: user + ' joined ' + boop }});
       window.setTimeout(() => context.setState({feedback: {...context.state.feedback, open: false}}), 2000);
     });
@@ -72,6 +66,8 @@ class Main extends Component {
   handleClose = () => this.setState({open: false});
 
   render() {
+    // sets all variables for the user login fields
+    // or signup fields based on current state
     const logOutButton = this.state.isLoggedIn ?
       (<FlatButton label="Logout"
         onTouchTap={this.handleLogout.bind(this)}/>

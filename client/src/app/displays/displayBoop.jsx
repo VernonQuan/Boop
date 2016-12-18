@@ -30,13 +30,11 @@ class displayBoop extends React.Component {
   }
 
   render() {
-    console.log(this.props.params.boopNum);
     // test boop populated from redux
     var testBoop = this.props.markers[this.props.params.boopNum];
     var startDate = new Date(this.state.today.toDateString());
     // sets startDate back 3 days
     startDate.setDate(startDate.getDate() - 3);
-    console.log(startDate);
 
     var dates = [];
     for (var i = 0; i < 7; i++){
