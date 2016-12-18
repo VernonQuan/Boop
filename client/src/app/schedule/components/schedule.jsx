@@ -13,6 +13,9 @@ import UserAmount from './userQuantity.jsx';
 import Divider from 'material-ui/Divider';
 import * as Utils from '../../utils/utils.js';
 import {Coords} from '../../map/map.jsx';
+import ScheduleGrid from './categoryGrid.jsx';
+import Subheader from 'material-ui/Subheader';
+
 
 class ScheduleContainer extends React.Component {
   constructor (props) {
@@ -30,8 +33,12 @@ class ScheduleContainer extends React.Component {
       startDate: null,
       startTime:null,
       checkIns:[],
-      limit: 1
+      limit: 1,
+      categories: [false, false, false, false, false],
+      category: '',
+      img: ''
     };
+    
     
     this.onNameInput = this.onNameInput.bind(this);
     this.onStartDateSet = this.onStartDateSet.bind(this);
@@ -40,6 +47,15 @@ class ScheduleContainer extends React.Component {
     this.onScheduleBoop = this.onScheduleBoop.bind(this);
     // this.onFrequencyChange = this.onFrequencyChange.bind(this);
     // this.onDropDownSelect = this.onDropDownSelect.bind(this);
+
+    this.onCategorySelect = {
+      onSelectDrinks: this.onSelectDrinks.bind(this),
+      onSelectFood: this.onSelectFood.bind(this),
+      onSelectGym: this.onSelectGym.bind(this),
+      onSelectOutdoors: this.onSelectOutdoors.bind(this),
+      onSelectSports: this.onSelectSports.bind(this),
+    };
+
     this.onSelectDays = {
       onSelectDaysInputSunday: this.onSelectDaysInputSunday.bind(this),
       onSelectDaysInputMonday: this.onSelectDaysInputMonday.bind(this),
@@ -49,6 +65,12 @@ class ScheduleContainer extends React.Component {
       onSelectDaysInputFriday: this.onSelectDaysInputFriday.bind(this),
       onSelectDaysInputSaturday: this.onSelectDaysInputSaturday.bind(this),
     };
+  }
+
+  onCategorySelect(category) {
+    this.setState({
+      category: category.target.value
+    });
   }
 
   onNameInput(nameInput) {
@@ -118,6 +140,60 @@ class ScheduleContainer extends React.Component {
     // // time to write some UGLY MFIN CODE.
 //////////////////////////////////////////////////
 
+onSelectDrinks(event, checked) {
+  // var currentState = this.state;
+  // currentState.categories[0] = checked;
+  if (checked) {
+    this.setState({
+      category: 'Drinks',
+      img: 'https://static1.squarespace.com/static/51e6e1c8e4b018cade39dd2d/t/5239c299e4b0dd764d7743f7/1379517082863/bar-services-hero.jpg'
+    });
+  }
+}
+
+onSelectFood(event, checked) {
+  // var currentState = this.state;
+  // currentState.categories[1] = checked;
+  if (checked) {
+    this.setState({
+      category: 'Food',
+      img: 'https://usercontent2.hubstatic.com/12089443_f496.jpg'
+    });
+  }
+}
+
+onSelectGym(event, checked) {
+  // var currentState = this.state;
+  // currentState.categories[2] = checked;
+  if (checked) {
+    this.setState({
+      category: 'Gym',
+      img: 'http://www.kaylainthecity.com/wp-content/uploads/gym.jpg'
+    });
+  }
+}
+
+onSelectOutdoors(event, checked) {
+  // var currentState = this.state;
+  // currentState.categories[3] = checked;
+  if (checked) {
+    this.setState({
+      category: 'Outdoors',
+      img: 'http://az616578.vo.msecnd.net/files/2015/06/08/635693880042525992-518822648_couple-hiking-valley.jpg'
+    });
+  }
+}
+
+onSelectSports(event, checked) {
+  // var currentState = this.state;
+  // currentState.categories[4] = checked;
+  if (checked) {
+    this.setState({
+      category: 'Sports',
+      img: 'https://s-media-cache-ak0.pinimg.com/originals/94/91/be/9491be93bd39554e24def0ec1530b68f.jpg'
+    });
+  }
+}
 
 // DONT JUDGE ME, IM PRESSED FOR TIME D;
 //////////////////////////////////////////////////
@@ -168,6 +244,15 @@ onSelectDaysInputSaturday(event, checked) {
   render() {
     return (
       <div>
+        <div>
+          <Subheader>Pick One Boop Category</Subheader>
+        </div>
+        <div>
+          <ScheduleGrid 
+            onCategorySelect={this.onCategorySelect}
+            category={this.state.category}
+          />
+        </div>
         <div>
           <BoopNameInput
             onNameInput={this.onNameInput}
