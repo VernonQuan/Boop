@@ -4,7 +4,7 @@ import Avatar from 'material-ui/Avatar';
 import Chip from 'material-ui/Chip';
 
 const styles = {
-  chip: {
+  chip: {   
     margin: 4,
   },
   wrapper: {
@@ -47,7 +47,6 @@ class Leaderboard extends React.Component {
   render() {
     return(
       <TableRow>
- 
         <TableRowColumn><Chip style={styles}>
             <Avatar src={this.determinePicture(this.props.userz.rank)} />
           {this.props.userz.rank}</Chip></TableRowColumn>

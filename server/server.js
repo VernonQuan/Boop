@@ -20,6 +20,13 @@ require('./config/passport');
 
 app.use('/boops', boopRouter);
 
+app.use('/s3', require('react-dropzone-s3-uploader/s3router')({
+    bucket: 'boops',
+    region: 'us-west-2', //optional 
+    headers: {'Access-Control-Allow-Origin': '*'}, // optional 
+    ACL: 'private' // this is default 
+}));
+
 app.post('/register', userCtrl.register);
 app.post('/login', userCtrl.login);
 app.get('/api/users', userCtrl.allUsers);

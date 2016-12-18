@@ -7,6 +7,7 @@ import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField';
 import * as loginCtrl from './loginCtrl';
 import PictureDrop from './pictureDrop.jsx';
+import DropzoneS3 from './dropzoneS3Uploader.jsx';
 class Login extends Component {
   constructor(props, context) {
     super(props, context);
