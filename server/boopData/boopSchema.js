@@ -5,7 +5,7 @@ var User = require('../users/userModel');
 
 var boopSchema = new Schema({
   refId: {type: Number, index: true}, //a number used to keep track of the boop
-  name: String,
+  name: {type: String, required: true},
   coords: {
     latitude: Number,
     longitude: Number
@@ -16,7 +16,9 @@ var boopSchema = new Schema({
   joinedUsers: [String],
   endDate: [Date],
   ownerId:  {type: Schema.Types.ObjectId, ref: 'User'},
-  checkIns: [Date] // a history of successful check-ins
+  checkIns: [Date], // a history of successful check-ins
+  category: {type: String, required: true},
+  img: String,
   //time (when during the day are you supposed to check in)
   //repeats (every week? every other week? is this necessary?)
 });
