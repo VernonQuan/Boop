@@ -15,13 +15,15 @@ var User = require('./users/userModel');
 
 var userCtrl = require('./controllers/userController');
 
+
 require('./config/passport');
 
 app.use('/boops', boopRouter);
-
 app.post('/register', userCtrl.register);
 app.post('/login', userCtrl.login);
+app.put('/newRank', userCtrl.changeRank);
 app.get('/api/users', userCtrl.allUsers);
+app.get('/user:email',userCtrl.loggedIn);
 
 // To use on Heroku, set the environment variable:
 // $ heroku set:config MONGOLAB_URL=mongodb://user:password@mongolabstuff
@@ -30,7 +32,6 @@ mongoose.connect(db);
 
 io.on('connection', function(socket){
   socket.on('join', function(boop, user) {
-    console.log(user, 'joined', boop);
     io.emit('join', boop, user);
   });
 });

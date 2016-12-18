@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {browserHistory} from 'react-router';
 import { addMarker } from '../../actions/index.js';
 import DropDownList from './dropdown.jsx';
 import CommitButton from './commitButton.jsx';
@@ -105,12 +106,14 @@ class ScheduleContainer extends React.Component {
     var context = this;
     var boopState = this.state;
     boopState.ownerId = this.props.user._id;
+    boopState.joinedUsers = [this.props.user._id];
 
     // Sends new boop to database and stores the boop in redux storage
     Utils.postBoop(boopState, function() {
       console.log('posted!');
       context.props.dispatch(addMarker(boopState));
     });
+    browserHistory.push('/');
   }
 
   // onDropDownSelect(event, index, value) {

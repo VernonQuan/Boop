@@ -3,6 +3,7 @@
  * which incorporates components provided by Material-UI.
  */
 import React, {Component} from 'react';
+import {browserHistory} from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 import Dialog from 'material-ui/Dialog';
@@ -24,17 +25,12 @@ import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 const styles = {
-  container: {
-    textAlign: 'center',
-    paddingTop: 200,
-  },
+  container: { textAlign: 'center', paddingTop: 200
+  }
 };
 
-
 const muiTheme = getMuiTheme({
-  palette: {
-    accent1Color: deepOrange500,
-  },
+  palette: { accent1Color: deepOrange500 }
 });
 
 class Main extends Component {
@@ -57,13 +53,13 @@ class Main extends Component {
   componentDidMount() {
     var context = this;
     this.socket.on('join', function(boop, user) {
-      console.log(user, 'joined', boop);
       context.setState({feedback: {...context.state.feedback, open: true, message: user + ' joined ' + boop }});
       window.setTimeout(() => context.setState({feedback: {...context.state.feedback, open: false}}), 2000);
     });
   }
 
   handleLogout() {
+    browserHistory.push('/');
     loginCtrl.logout();
     this.setState({
       isLoggedIn: false
@@ -74,6 +70,8 @@ class Main extends Component {
   handleClose = () => this.setState({open: false});
 
   render() {
+    // sets all variables for the user login fields
+    // or signup fields based on current state
     const logOutButton = this.state.isLoggedIn ?
       (  <IconMenu
           iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
@@ -104,12 +102,12 @@ class Main extends Component {
             docked={false}
             open={this.state.open}
             onRequestChange={(open) => this.setState({open})}>
-            <MenuItem>
-              <Link to="/" onClick={this.handleDrawerToggle}>Main Page</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link to="/displayProfile" onClick={this.handleDrawerToggle}>Profile</Link>
-            </MenuItem>
+            <Link to="/" onClick={this.handleDrawerToggle}>
+              <MenuItem>Main Page</MenuItem>
+            </Link>
+            <Link to="/displayProfile" onClick={this.handleDrawerToggle}>
+            <MenuItem>Profile</MenuItem>
+            </Link>
           </Drawer>
           {LoginModal}
           {this.props.children}

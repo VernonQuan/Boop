@@ -19,6 +19,11 @@ const checkedStyle = {
 
 const statsStyle = {
   color: 'white',
+  backgroundColor:'blue',
+};
+
+const removeStyle = {
+  color: 'white',
   backgroundColor:'red',
 };
 
@@ -56,12 +61,11 @@ class Boop extends React.Component {
               } 
             }
             disabled = {this.props.boop.checkedIn}
-            style={this.props.boop.checkedIn ? checkedStyle : notCheckedStyle}
-          />
+            style={this.props.boop.checkedIn ? checkedStyle : notCheckedStyle}/>
           <FlatButton
             label={<Link to={'/display/' + this.props.index} style={linkStyle}>Stats</Link>}//send to the stats page of the boop.
-            style={statsStyle}
-          />
+            style={statsStyle}/>
+          <FlatButton label={'Remove'} style={removeStyle} onTouchTap={() => this.props.handleRemoveBoop(this.props.boop)}/>
         </CardActions> 
       </Card>
     );
