@@ -34,6 +34,11 @@ const muiTheme = getMuiTheme({
   },
 });
 
+const linkStyle = {
+  color:'white',
+  'text-decoration':'none'
+};
+
 class Main extends Component {
   constructor(props, context) {
     super(props, context);
@@ -92,10 +97,10 @@ class Main extends Component {
             docked={false}
             open={this.state.open}
             onRequestChange={(open) => this.setState({open})}>
-            <Link to="/" onClick={this.handleDrawerToggle}>
+            <Link to="/" onClick={this.handleDrawerToggle} style={linkStyle}>
               <MenuItem>Main Page</MenuItem>
             </Link>
-            <Link to="/displayProfile" onClick={this.handleDrawerToggle}>
+            <Link to="/displayProfile" onClick={this.handleDrawerToggle} style={linkStyle}>
             <MenuItem>Profile</MenuItem>
             </Link>
           </Drawer>
